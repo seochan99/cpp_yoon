@@ -1,26 +1,44 @@
 #include <iostream>
 
 
-void MyFunc(void)
+void swap(int *num1,int * num2)
 {
-    std::cout<<"MyFunc(void) called"<<std::endl;
+    int temp;
+    temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
 }
 
-void MyFunc(char c)
+void swap(char *c1,char *c2)
 {
-    std::cout<<"MyFunc(char c) called"<<std::endl;
+    char temp;
+    temp = *c1;
+    *c1 = *c2;
+    *c2 = temp;
 }
 
-
-void MyFunc(int a,int b)
+void swap(double * dbl1, double * dbl2)
 {
-    std::cout<<"void MyFunc(int a,int b) called"<<std::endl;
+    double temp;
+    temp = *dbl1;
+    *dbl1 = *dbl2;
+    *dbl2 = temp;
 }
 
 int main(void)
 {
-    MyFunc();
-    MyFunc('A');
-    MyFunc(12,23);
+    int num1= 20, num2 = 30;
+    swap(&num1,&num2);
+    std::cout<<num1<<' '<<num2<<std::endl;
+    
+    char ch1= 'a', ch2 = 'z';
+    swap(&ch1,&ch2);
+    std::cout<<ch1<<' '<<ch2<<std::endl;
+    
+    double dbl1= 2.22, dbl2 = 5.55;
+    swap(&dbl1,&dbl2);
+    std::cout<<dbl1<<' '<<dbl2<<std::endl;
+    
+    
     return 0;
 }
