@@ -1,16 +1,28 @@
 #include <iostream>
-
 using namespace std;
+
+bool IsPositive(int num)
+{
+    if(num<0)
+        return false;
+    else
+        return true;
+}
+
 int main(void)
 {
-    int num2;
-    int num = 20;
-    cout<<"Hello World"<<endl;
-    cout<<"Hello"<<"World"<<endl;
-    cout<<num<<" "<<"A";
-    cout<<" "<<3.14<<endl;
-    cout<<"num2 : ";
-    cin>>num2;
+    bool isPos;
+    int num;
+    cout<<"Input Number : ";
+    cin>>num;
+    
+    isPos = IsPositive(num);
+    if (isPos) {
+        cout<<"Positive Number"<<endl;
+    }
+    else{
+        cout<<"Negative Number"<<endl;
+    }
     
     
     return 0;
