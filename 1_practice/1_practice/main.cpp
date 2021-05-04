@@ -1,29 +1,25 @@
 #include <iostream>
+
 using namespace std;
 
-bool IsPositive(int num)
+void SwapPointer(int *(&ref1), int *(&ref2))
 {
-    if(num<0)
-        return false;
-    else
-        return true;
+    int *temp = ref1;
+    ref1 = ref2;
+    ref2 = temp;
+    
 }
 
 int main(void)
 {
-    bool isPos;
-    int num;
-    cout<<"Input Number : ";
-    cin>>num;
+    int num1 = 5;
+    int *ptr1 = &num1;
+    int num2 = 10;
+    int *ptr2 = &num2;
+    SwapPointer(ptr1,ptr2);
     
-    isPos = IsPositive(num);
-    if (isPos) {
-        cout<<"Positive Number"<<endl;
-    }
-    else{
-        cout<<"Negative Number"<<endl;
-    }
-    
+    cout<<*ptr1<<endl;
+    cout<<*ptr2<<endl;
     
     return 0;
 }
