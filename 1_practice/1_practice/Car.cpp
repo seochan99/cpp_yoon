@@ -5,41 +5,50 @@
 //  Created by 서희찬 on 2021/05/10.
 //
 #include <iostream>
-#include <cstring>
 #include "Car.hpp"
 using namespace std;
-void Car::InitMembers(char * ID, int fuel)
+
+bool Point::InitMembers(int xpos, int ypos)
 {
-    strcpy(gamerID, ID);
-    fuelGauge = fuel;
-    curSpeed=0;
+    if(xpos<0 || ypos<0)
+    {
+        cout<<"벗어난 범위의 값 전달"<<endl;
+        return false;
+    }
+    
+    x = xpos;
+    y = ypos;
+    return true;
 }
 
-void Car::ShowCarState()
+int Point::GetX() const // cons func
 {
-    cout<<"소유자 ID : "<<gamerID<<endl;
-    cout<<"연료량 : "<<fuelGauge<<"%"<<endl;
-    cout<<"현재속도 : "<<curSpeed<<"km/s"<<endl<<endl;
+    return x;
 }
-void Car::Accel()
+
+int Point::GetY() const
 {
-    if(fuelGauge==0)
-        return;
-    else
-        fuelGauge-=CAR_CONST::FUEL_STEP;
-    
-    if((curSpeed+CAR_CONST::ACC_STEP)>=CAR_CONST::MAX_SPD)
+    return y;
+}
+
+bool Point::SetX(int xpos)
+{
+    if(0>xpos||xpos>100)
     {
-        curSpeed = CAR_CONST::MAX_SPD;
-        return;
+        cout<<"벗어난 범위의 값 전달"<<endl;
+        return false;
     }
-    curSpeed+=CAR_CONST::ACC_STEP;
+    x=xpos;
+    return true;
 }
-void Car::Break()
+
+bool Point::SetY(int ypos)
 {
-    if (curSpeed<CAR_CONST::BRK_STEP) {
-        curSpeed=0;
-        return;
+    if(0>ypos || ypos>100)
+    {
+        cout<<"벗어난 값입니다."<<endl;
+        return false;
     }
-    curSpeed = CAR_CONST::BRK_STEP;
+    y = ypos;
+    return true;
 }
