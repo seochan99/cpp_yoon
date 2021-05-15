@@ -19,13 +19,42 @@ public:
 
 class Circle //원 ->원의 중심좌표, 반지름 길이 정보
 {
-    
-}
+private:
+    int rad; // 반지름
+    Point center; // 원의 중심
+public:
+    void Init(int x,int y, int r)
+    {
+        rad =r;
+        center.Init(x, y);
+    }
+    void ShowCircleInfo() const
+    {
+        cout<<"Radius : "<<rad<<endl;
+        center.showPointInfo();
+    }
+};
 
 class Ring
 {
+private:
+    Circle inCircle;
+    Circle outCircle;
+public:
+    void Init(int inX,int inY, int inR, int x, int y, int r)
+    {
+        inCircle.Init(inX, inY, inR);
+        outCircle.Init(x, y, r);
+    }
+    void ShowRingInfo() const
+    {
+        cout<<"Inner Circle Info ..."<<endl;
+        inCircle.ShowCircleInfo();
+        cout<<"Out Circle Info..."<<endl;
+        outCircle.ShowCircleInfo();
+    }
     
-}
+};
 
 int main(void)
 {
