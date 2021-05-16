@@ -9,7 +9,13 @@ private:
     int myMoney;
     
 public:
-    void InitMembers(int price,int num, int money)
+//    void InitMembers(int price,int num, int money)
+//    {
+//        APPLE_PRICE = price;
+//        numOfApples = num;
+//        myMoney = money;
+//    }
+    FruiteSeller(int price, int num, int money)
     {
         APPLE_PRICE = price;
         numOfApples = num;
@@ -41,7 +47,7 @@ class FruiteBuyer
     int numOfApples; // pricate
     
 public:
-    void InitMemebrs(int money)
+    FruiteBuyer(int money)
     {
         myMoney = money;
         numOfApples = 0;
@@ -65,10 +71,8 @@ public:
 
 int main(void)
 {
-    FruiteSeller seller;
-    seller.InitMembers(1000, 20, 0);
-    FruiteBuyer buyer;
-    buyer.InitMemebrs(5000);
+    FruiteSeller seller(1000,20,0);
+    FruiteBuyer buyer(5000);
     buyer.BuyApples(seller, 2000); // 과일 구매!
     
     cout<<" 과일 판매자의 현황 "<<endl;
