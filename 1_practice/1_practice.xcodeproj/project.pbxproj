@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9806ADF72651514800006CFC /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9806ADF52651514800006CFC /* Point.cpp */; };
+		9806ADFA265152A900006CFC /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9806ADF8265152A900006CFC /* Rectangle.cpp */; };
 		987982782636F1BE000E1890 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 987982772636F1BE000E1890 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9806ADF52651514800006CFC /* Point.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
+		9806ADF62651514800006CFC /* Point.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Point.hpp; sourceTree = "<group>"; };
+		9806ADF8265152A900006CFC /* Rectangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rectangle.cpp; sourceTree = "<group>"; };
+		9806ADF9265152A900006CFC /* Rectangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rectangle.hpp; sourceTree = "<group>"; };
 		987982742636F1BE000E1890 /* 1_practice */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 1_practice; sourceTree = BUILT_PRODUCTS_DIR; };
 		987982772636F1BE000E1890 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				987982772636F1BE000E1890 /* main.cpp */,
+				9806ADF52651514800006CFC /* Point.cpp */,
+				9806ADF8265152A900006CFC /* Rectangle.cpp */,
+				9806ADF9265152A900006CFC /* Rectangle.hpp */,
+				9806ADF62651514800006CFC /* Point.hpp */,
 			);
 			path = 1_practice;
 			sourceTree = "<group>";
@@ -118,7 +128,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9806ADF72651514800006CFC /* Point.cpp in Sources */,
 				987982782636F1BE000E1890 /* main.cpp in Sources */,
+				9806ADFA265152A900006CFC /* Rectangle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
