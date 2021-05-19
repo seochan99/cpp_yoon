@@ -1,65 +1,36 @@
 #include <iostream>
-#include <cstring>
-
 using namespace std;
 
-class Person
+class SelfRef
 {
 private:
-    char * name;
-    int age;
+    int num;
 public:
-    Person(char * myname, int myage):age(myage)
+    SelfRef(int n):num(n)
     {
-        int len = strlen(myname)+1;
-        name = new char[len];
-        strcpy(name, myname);
+        cout<<"객체 생성"<<endl;
     }
-    Person()
+    SelfRef& Adder(int n)
     {
-        name = NULL;
-        age =0;
-        cout<<"called Person()"<<endl;
+        num+=n;
+        return *this;
     }
-    void SetPersonInfo(char * myname, int myage)
+    SelfRef& ShowTwoNumber()
     {
-        name = myname;
-        age = myage;
-    }
-    void ShowPersonInfo() const
-    {
-        cout<<"name : "<<name<<",  ";
-        cout<<"age : "<<age<<endl;
-    }
-    ~Person()
-    {
-        delete [] name;
-        cout<<"called destructor !"<<endl;
+        cout<<num<<endl;
+        return *this;
     }
 };
 
 int main(void)
 {
-    Person parr[3];
-    char namestr[100];
-    char * strptr;
-    int age;
-    int len;
+    SelfRef obj(3);
+    SelfRef &ref= obj.Adder(2);
     
-    for(int i=0;i<3;i++)
-    {
-        cout<<"name : ";
-        cin>>namestr;
-        cout<<"age : ";
-        cin>>age;
-        len = strlen(namestr)+1;
-        strptr = new char[len];
-        strcpy(strptr, namestr);
-        parr[i].SetPersonInfo(strptr, age);
-        
-    }
-    parr[0].ShowPersonInfo();
-    parr[1].ShowPersonInfo();
-    parr[2].ShowPersonInfo();
+    obj.ShowTwoNumber();
+    ref.ShowTwoNumber();
+    
+    ref.Adder(1).ShowTwoNumber().Adder(2).ShowTwoNumber();
     return 0;
 }
+    
