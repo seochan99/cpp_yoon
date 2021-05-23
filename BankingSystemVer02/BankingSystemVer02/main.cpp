@@ -160,7 +160,7 @@ void WithdrawMoney(void)
     cout<<"계좌ID : "; cin>>id;
     cout<<"출금액 : "; cin>>money;
     
-    for( int i=0;i<accNum;i++)
+    for( int i=0;i<accNum;i++) //accnum 만큼 반복 
     {
         if(accArr[i]->GetID() == id) //아이디와 동일한 계좌 발견
         {
@@ -179,7 +179,7 @@ void WithdrawMoney(void)
     
 }
 
-void ShowAllAccInfo(void)
+void ShowAllAccInfo(void) // 모든 정보 출력
 {
     for(int i =0;i<accNum;i++)
     {
