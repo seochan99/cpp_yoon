@@ -1,34 +1,44 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
-class SoSimple
+class Person
 {
 private:
-    int num1;
-    int num2;
+    char*name;
+    int age;
 public:
-    SoSimple(int n1,int n2):num1(n1),num2(n2)
+    Person(char *myname, int myage)
     {
-        
+        int len= strlen(myname)+1;
+        name = new char[len];
+        strcpy(name, myname);
+        age = myage;
     }
-    SoSimple(SoSimple &copy):num1(copy.num1),num2(copy.num2)
+    Person(const Person& copy): age(copy.age)
     {
-        cout<<"Called SoSimple(SoSimple &copy)"<<endl;
+        name = new char[strlen(copy.name)+1];
+        strcpy(name, copy.name); // copy name을 name에 저장, copy name은 새로운 동적할당
     }
-    void ShowSimpleData()
+    void ShowPersonInfo() const
     {
-        cout<<num1<<endl;
-        cout<<num2<<endl;
+        cout<<"이름 : "<<name<<endl;
+        cout<<"age : "<<age<<endl;
+    }
+    ~Person()
+    {
+        delete [] name;
+        cout<<"called destructor"<<endl;
     }
 };
 
-
 int main(void)
 {
-    SoSimple sim1(15,30);
-    cout<<"생성 및 초기화 직전"<<endl;
-    SoSimple sim2 = sim1; // SoSimple sim2(sim1)
-    cout<<"생성 및 초기화 직후"<<endl;
-    sim2.ShowSimpleData();
+    Person man1("Lee Dong Woo",29);
+    Person man2 = man1;
+    man1.ShowPersonInfo();
+    man2.ShowPersonInfo();
     return 0;
 }
+
+
