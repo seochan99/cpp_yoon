@@ -36,12 +36,21 @@ private:
 public:
     NameCard(char * _name, char * _company, char * _phone, int pos):position(pos)// 생성자와 이니셜라이저
     {
-        name = new char[strlen(_name)+1]; // 크기만큼 동적할당
-        company = new char[strlen(_company)+1];
-        phone = new char[strlen(_phone)+1];
-        strcpy(name, _name);
-        strcpy(company, _company);
-        strcpy(phone, _phone);
+        this->name = new char[strlen(_name)+1]; // 크기만큼 동적할당
+        this->company = new char[strlen(_company)+1];
+        this->phone = new char[strlen(_phone)+1];
+        strcpy(this->name, _name);
+        strcpy(this->company, _company);
+        strcpy(this->phone, _phone);
+    }
+    NameCard(const NameCard& copy ):position(copy.position)
+    {
+        name = new char[strlen(copy.name)+1]; // 크기만큼 동적할당
+        company = new char[strlen(copy.company)+1];
+        phone = new char[strlen(copy.phone)+1];
+        strcpy(name, copy.name);
+        strcpy(company, copy.company);
+        strcpy(phone, copy.phone);
     }
     void ShowNameCardInfo() const
     {
@@ -59,13 +68,23 @@ public:
     }
 };
 
+//int main(void)
+//{
+//    NameCard manClerk("Lee","ABEng","010-2342-1231",COMP_POS::CLERK);
+//    NameCard manSENIOR("Seo","APPLE","010-2342-1231",COMP_POS::SENIOR);
+//    NameCard manAssist("Kim","SAMSUNG","010-2342-1231",COMP_POS::ASSIST);
+//    manClerk.ShowNameCardInfo();
+//    manSENIOR.ShowNameCardInfo();
+//    manAssist.ShowNameCardInfo();
+//    return 0;
+//}
 int main(void)
 {
     NameCard manClerk("Lee","ABEng","010-2342-1231",COMP_POS::CLERK);
+    NameCard copy1 = manClerk;
     NameCard manSENIOR("Seo","APPLE","010-2342-1231",COMP_POS::SENIOR);
-    NameCard manAssist("Kim","SAMSUNG","010-2342-1231",COMP_POS::ASSIST);
-    manClerk.ShowNameCardInfo();
-    manSENIOR.ShowNameCardInfo();
-    manAssist.ShowNameCardInfo();
+    NameCard copy2 = manSENIOR;
+    copy1.ShowNameCardInfo();
+    copy2.ShowNameCardInfo();
     return 0;
 }
