@@ -2,13 +2,19 @@
 
 int main(void)
 {
-    int year;
-    scanf("%d",&year);
-    
-    if(((year%4==0)&&(year%100!=0))||(year%400==0))
-        printf("1\n");
-    else
-        printf("0\n");
-    
+    int h,m;
+    scanf("%d %d",&h,&m);
+    m-=45; // 45분 다운
+    if(m<0)
+    {
+        h-=1; // 시간 내리기
+        if(h<0)
+        {
+            h=23;
+        }
+        m = 60 + m;
+    }
+    printf("%d %d\n",h,m);
     return 0;
 }
+
