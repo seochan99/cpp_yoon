@@ -2,13 +2,18 @@
 
 int main(void)
 {
-    int num;
-    scanf("%d",&num);
-    
-    for(int i=num;i>0;i--)
+    int n;
+    int k=0;
+    int i=1;
+    scanf("%d",&n);
+    k=n;
+    while(1)
     {
-        printf("%d\n",i);
+        n = (((n%10)*10)+((n/10 + n%10)%10));
+        if(k==n)
+            break;
+        i++;
     }
-    return 0;
+    printf("%d\n",i);
 }
 
