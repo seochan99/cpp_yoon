@@ -2,19 +2,17 @@
 
 int main(void)
 {
-    int n, num;
-    int min = 1000001, max = -1000001;
-    scanf("%d", &n);
+    int num1,max=0,maxnum=0;
     
-    for (int i = 1; i <= n; i++)
+    for(int i=1;i<=9;i++)
     {
-        scanf("%d", &num);
-        if (num > max)
-            max = num;
-        if (num < min)
-            min = num;
+        scanf("%d",&num1);
+        if(num1>max)
+        {
+            max = num1;
+            maxnum = i;
+        }
     }
-    printf("%d %d", min, max);
-    
+    printf("%d \n%d",max,maxnum);
     return 0;
 }
