@@ -2,18 +2,19 @@
 
 int main(void)
 {
-    int n;
-    int k=0;
-    int i=1;
-    scanf("%d",&n);
-    k=n;
-    while(1)
+    int n, num;
+    int min = 1000001, max = -1000001;
+    scanf("%d", &n);
+    
+    for (int i = 1; i <= n; i++)
     {
-        n = (((n%10)*10)+((n/10 + n%10)%10));
-        if(k==n)
-            break;
-        i++;
+        scanf("%d", &num);
+        if (num > max)
+            max = num;
+        if (num < min)
+            min = num;
     }
-    printf("%d\n",i);
+    printf("%d %d", min, max);
+    
+    return 0;
 }
-
