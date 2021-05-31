@@ -1,29 +1,36 @@
 #include <stdio.h>
 
+
 int main(void)
 {
-    int b=0;
-    int arr[10];
+    int n,max;
+    double arr[1000];
+    double total=0;
     
-    for(int i=0;i<10;i++)
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
     {
-        scanf("%d",&arr[i]);
-        arr[i]=arr[i]%42;
+        scanf("%lf",&arr[i]);
     }
-    
-    for(int i=0;i<10;i++)
+    // 최댓값 구하기
+    max = arr[0];
+    for(int i=0;i<n;i++)
     {
-        int a=0; // 매루프마다 0으로 초기화
-        for(int j=0;j<i;j++) // i<j 
+        if(arr[i]>max)
         {
-            if(arr[i]==arr[j])
-                a++;
+            max = arr[i];
         }
-        if(a==0)
-            b++;
+            
+        
     }
-    
-    printf("%d",b);
+    // 평균 구하기
+    for(int i=0;i<n;i++)
+        {
+            arr[i]=(arr[i]/max*100);
+            total+=arr[i];
+        }
+        
+    total = total/n;
+    printf("%lf",total);
     return 0;
 }
-
