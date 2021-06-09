@@ -2,14 +2,12 @@
 
 int main(void)
 {
-    int n,sum=0;
-    char a[100]={0,};
-
-    scanf("%d",&n);
-    scanf("%s",a);
+    char s[100];
+    scanf("%s",s);
     
-    for(int i=0;i<n;i++)
-        sum+=a[i]-'0'; // 아스키 0 = 48이므로!!!
-    printf("%d\n",sum);
+    for(int i=0;s[i]!=0;i++)
+    {
+        printf("%d ",s[i]-97);
+    }
     return 0;
 }
