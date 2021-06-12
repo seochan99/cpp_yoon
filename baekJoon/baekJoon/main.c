@@ -1,28 +1,60 @@
 #include <stdio.h>
 #include <string.h>
 
+int change(int n);
+
 int main(void)
 {
-    char arr[1000000];
-    int i,cnt=0,len;
+    char arr[15];
+    int i,j,total=0;
+    scanf("%s",arr);
     
-    scanf("%[^\n]",arr); // null이 나오기 전까지 읽어버린다 ! = 엔터가 나올때까지 문자열로 받는다 !
-    len = strlen(arr);
-    
-    if(len == 1)
+    for(i='A';i<='Z';i++)
     {
-        if(arr[0]==' ')
+        for(j=0;j<strlen(arr);j++) // 문자열 길이만큼 반복
         {
-            printf("0\n");
-            return 0;
+            if(i==arr[j])
+                total+=change(i);
         }
     }
-    
-    for(i=1;i<len-1;i++) //마지막은 널문자, i 는 1부터 시작 
-    {
-        if(arr[i]==' ')
-            cnt++; //공백 갯수 세기
-    }
-    printf("%d\n",cnt+1); //공백 + 1 = 단어갯수
+    total+=strlen(arr); // 숫자 +1 만큼을 더해야하므로 길이를 추가해줘야한다.
+    printf("%d\n",total);
     return 0;
+}
+
+int change(int n)
+{
+    switch (n) {
+        case 'A':
+        case 'B':
+        case 'C':
+            return 2; // 숫자 2
+        case 'D':
+        case 'E':
+        case 'F':
+            return 3;
+        case 'G':
+        case 'H':
+        case 'I':
+            return 4;
+        case 'J':
+        case 'K':
+        case 'L':
+            return 5;
+        case 'M':
+        case 'N':
+        case 'O':
+            return 6;
+        case 'P':
+        case 'Q':
+        case 'R':
+        case 'S':
+            return 7;
+        case 'T':
+        case 'U':
+        case 'V':
+            return 8;
+        default: //나머지 영어
+            return 9;
+    }
 }
