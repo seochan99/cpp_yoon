@@ -6,18 +6,29 @@ int main(void)
     // 문자열 입력
     char arr[1000000];
     int arr2[26]={0,};
-    int max,select=0,result=0,i,j;
+    int max,len,select=0,result=0;
     scanf("%s",arr);
     //대소문자 -> 대문자 통일
-    for(i=0;i<strlen(arr);i++)
+    len = strlen(arr);
+    for(int i='a';i<='z';i++)
     {
-        if((arr[i]>='a')&&(arr[i]<='z')) // 소문자 -> 대문자 바꿔줌
-            arr[i]-=32;
-        arr2[arr[i]-65]++; //65~90 배열의 자리에 저장
+        for(int j=0;j<len;j++)
+        {
+            if(i==arr[j]) // 소문자일때
+                arr2[i-'a']++;
+        }
+    }
+    for(int i='A';i<='Z';i++)
+    {
+        for(int j=0;j<len;j++)
+        {
+            if(i==arr[j]) // 대문자일때
+                arr2[i-'A']++;
+        }
     }
     // 최댓값 찾기
     max = arr2[0];
-    for(j=0;j<26;j++)
+    for(int j=0;j<26;j++)
     {
         if(arr2[j]>max)
         {
@@ -25,9 +36,8 @@ int main(void)
             select = j;
         }
     }
-    
     //중복값 찾기
-    for(i=0;i<26;i++)
+    for(int i=0;i<26;i++)
     {
         if(max==arr2[i])
             result++;
