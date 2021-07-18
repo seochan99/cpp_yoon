@@ -95,17 +95,33 @@
 #     print(people[-1]) #오른쪽 끝 요소 출력 
 
 
-n=int(input())
+# n=int(input())
 
-ans=0
-for i in range(n): #n만큼 반복 
-    word = input() #단어 입력받음 
-    for j in range(len(word)):
-        if j!=len(word)-1: #단어의 끝도달전
-            if word[j]==word[j+1]: #옆에 같은 문자 있을 시 패스 
-                pass
-            elif word[j] in word[j+1:]: #옆이 아닌 다른곳에 있을 시 브레이크 
-                break 
-        else:
-            ans +=1 # 브레이크없이 끝날경우 ans +=1 진행
-print(ans)
+# ans=0
+# for i in range(n): #n만큼 반복 
+#     word = input() #단어 입력받음 
+#     for j in range(len(word)):
+#         if j!=len(word)-1: #단어의 끝도달전
+#             if word[j]==word[j+1]: #옆에 같은 문자 있을 시 패스 
+#                 pass
+#             elif word[j] in word[j+1:]: #옆이 아닌 다른곳에 있을 시 브레이크 
+#                 break 
+#         else:
+#             ans +=1 # 브레이크없이 끝날경우 ans +=1 진행
+# print(ans)
+
+#2839
+
+n = int(input())
+cnt=0 #봉지 최소 갯수 
+while True: #무한 반복 
+    if(n%5)==0: #5의배수 
+        cnt += (n//5)
+        print(cnt)
+        break
+    n-=3 #5의 배수가 아닐 때 매번빼주기 
+    cnt+=1 
+    if n<0 : #n이 0미만 
+        print(-1)
+        break 
+
