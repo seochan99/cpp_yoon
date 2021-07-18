@@ -127,5 +127,15 @@
 
 #10757
 
-a, b = map(int, input().split())
-print(a+b)
+# a, b = map(int, input().split())
+# print(a+b)
+
+#1011
+test = int(input())#테스트 케이스
+
+for i in range(test):
+    x,y = map(int,input().split()) #x,y받기 
+    distance = int(y-x) #사이 거리 
+    cnt =0 #작동횟수  
+
+# 7.18 규칙찾는중,,,
