@@ -112,16 +112,20 @@
 
 #2839
 
-n = int(input())
-cnt=0 #봉지 최소 갯수 
-while True: #무한 반복 
-    if(n%5)==0: #5의배수 
-        cnt += (n//5)
-        print(cnt)
-        break
-    n-=3 #5의 배수가 아닐 때 매번빼주기 
-    cnt+=1 
-    if n<0 : #n이 0미만 
-        print(-1)
-        break 
+# n = int(input())
+# cnt=0 #봉지 최소 갯수 
+# while True: #무한 반복 
+#     if(n%5)==0: #5의배수 
+#         cnt += (n//5)
+#         print(cnt)
+#         break
+#     n-=3 #5의 배수가 아닐 때 매번빼주기 
+#     cnt+=1 
+#     if n<0 : #n이 0미만 
+#         print(-1)
+#         break 
 
+#10757
+
+a, b = map(int, input().split())
+print(a+b)
