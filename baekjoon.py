@@ -130,12 +130,26 @@
 # a, b = map(int, input().split())
 # print(a+b)
 
-#1011
-test = int(input())#테스트 케이스
+# #1011
+# test = int(input())#테스트 케이스
 
-for i in range(test):
-    x,y = map(int,input().split()) #x,y받기 
-    distance = int(y-x) #사이 거리 
-    cnt =0 #작동횟수  
+# for i in range(test):
+#     x,y = map(int,input().split()) #x,y받기 
+#     distance = int(y-x) #사이 거리 
+#     cnt =0 #작동횟수  
 
-# 7.18 규칙찾는중,,,
+# # 7.18 규칙찾는중,,,
+
+#1978
+n = int(input()) # 주어진 수 
+nums = map(int,input().split())
+prime=0
+for num in nums:
+    notPrime =0
+    if num > 1:
+        for i in range(2,num): #2~num-1까지
+            if num % i == 0:
+                notPrime+=1 #소수가 아닌 수를 발견하면 하나 올린다 
+        if notPrime ==0: 
+            prime +=1 
+print(prime)
