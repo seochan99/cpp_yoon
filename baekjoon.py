@@ -154,24 +154,34 @@
 #             prime +=1 
 # print(prime)
 
-#2581 
-m = int(input())
-n = int(input())
+# #2581 
+# m = int(input())
+# n = int(input())
 
-prime_list = []
-for num in range(m,n+1):
-    notPrime =0 
-    if num>1:
-        for i in range(2,num): #2~num-1까지 
-            if num % i == 0:
-                notPrime+=1
-                break
-        if notPrime == 0 :
-            prime_list.append(num) #소수 추가 
+# prime_list = []
+# for num in range(m,n+1):
+#     notPrime =0 
+#     if num>1:
+#         for i in range(2,num): #2~num-1까지 
+#             if num % i == 0:
+#                 notPrime+=1
+#                 break
+#         if notPrime == 0 :
+#             prime_list.append(num) #소수 추가 
 
-if len(prime_list)>0:
-    print(sum(prime_list))
-    print(min(prime_list))
-else:
-    print(-1)    
+# if len(prime_list)>0:
+#     print(sum(prime_list))
+#     print(min(prime_list))
+# else:
+#     print(-1)    
 
+#11653
+n = int(input()) 
+j=2 #2부터 
+while n!=1 : #n이 1이되기전까지 반복 
+    if n%j==0:
+        n/=j
+        print(j)
+    else:#j=2일때 불능하다면 +1씩 올려간다 ! 
+        j+=1 
+        
