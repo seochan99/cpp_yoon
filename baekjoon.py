@@ -141,15 +141,37 @@
 # # 7.18 규칙찾는중,,,
 
 #1978
-n = int(input()) # 주어진 수 
-nums = map(int,input().split())
-prime=0
-for num in nums:
-    notPrime =0
-    if num > 1:
-        for i in range(2,num): #2~num-1까지
+# n = int(input()) # 주어진 수 
+# nums = map(int,input().split())
+# prime=0
+# for num in nums:
+#     notPrime =0
+#     if num > 1:
+#         for i in range(2,num): #2~num-1까지
+#             if num % i == 0:
+#                 notPrime+=1 #소수가 아닌 수를 발견하면 하나 올린다 
+#         if notPrime ==0: 
+#             prime +=1 
+# print(prime)
+
+#2581 
+m = int(input())
+n = int(input())
+
+prime_list = []
+for num in range(m,n+1):
+    notPrime =0 
+    if num>1:
+        for i in range(2,num): #2~num-1까지 
             if num % i == 0:
-                notPrime+=1 #소수가 아닌 수를 발견하면 하나 올린다 
-        if notPrime ==0: 
-            prime +=1 
-print(prime)
+                notPrime+=1
+                break
+        if notPrime == 0 :
+            prime_list.append(num) #소수 추가 
+
+if len(prime_list)>0:
+    print(sum(prime_list))
+    print(min(prime_list))
+else:
+    print(-1)    
+
