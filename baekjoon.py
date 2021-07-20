@@ -176,12 +176,46 @@
 #     print(-1)    
 
 #11653
-n = int(input()) 
-j=2 #2부터 
-while n!=1 : #n이 1이되기전까지 반복 
-    if n%j==0:
-        n/=j
-        print(j)
-    else:#j=2일때 불능하다면 +1씩 올려간다 ! 
-        j+=1 
-        
+# n = int(input()) 
+# j=2 #2부터 
+# while n!=1 : #n이 1이되기전까지 반복 
+#     if n%j==0:
+#         n/=j
+#         print(j)
+#     else:#j=2일때 불능하다면 +1씩 올려간다 ! 
+#         j+=1 
+
+#1929
+
+#시간초과
+# m, n = map(int,input().split())
+# for j in range(m,n+1):
+#     notPrime=0
+#     if j>1:
+#         for i in range(2,j):
+#             if j%i==0:
+#                 notPrime+=1
+#                 break
+#         if notPrime == 0:
+#             print(j)
+
+#에라토스테네스의 체 활용 
+
+def prime_list(k,n):
+    n+=1 #n이하의 숫자를 확인해야하므로 ! 
+    # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
+    sieve = [True] * n
+    # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
+    m = int(n ** 0.5)
+    for i in range(2, m + 1):
+        if sieve[i] == True:           # i가 소수인 경우 참 
+            for j in range(2*i, n, i): # i이후 i의 배수들을 False 판정
+                sieve[j] = False
+    
+    for i in range(k,n):
+        if i>1 and sieve[i]==True:
+            print(i)
+
+m,n = map(int,input().split())
+
+prime_list(m,n)
