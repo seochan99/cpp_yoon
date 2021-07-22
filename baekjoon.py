@@ -239,26 +239,56 @@
 #         print((num*2)+1)
 
 #4948
-def prime_list(k,n):
+# def prime_list(k,n):
+#     n+=1 #n이하의 숫자를 확인해야하므로 ! 
+#     # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
+#     sieve = [True] * n
+#     # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
+#     m = int(n ** 0.5)
+#     count=0
+#     for i in range(2, m + 1):
+#         if sieve[i] == True:           # i가 소수인 경우 참 
+#             for j in range(2*i, n, i): # i이후 i의 배수들을 False 판정
+#                 sieve[j] = False
+    
+#     for i in range(k,n):
+#         if i>1 and sieve[i]==True:
+#             count+=1
+#     print(count)
+
+# while True:
+#     num = int(input())
+#     if num == 0 :
+#         break
+#     else :
+#         prime_list(num+1,num*2)
+
+
+
+#9020 : 골드바흐의 추측 
+
+def prime_list(n): #소수 판독기 
     n+=1 #n이하의 숫자를 확인해야하므로 ! 
     # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
     sieve = [True] * n
     # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
     m = int(n ** 0.5)
-    count=0
     for i in range(2, m + 1):
         if sieve[i] == True:           # i가 소수인 경우 참 
             for j in range(2*i, n, i): # i이후 i의 배수들을 False 판정
                 sieve[j] = False
-    
-    for i in range(k,n):
-        if i>1 and sieve[i]==True:
-            count+=1
-    print(count)
+    return [i for i in range(2,n) if sieve[i]==True] #소수반환 
 
-while True:
-    num = int(input())
-    if num == 0 :
-        break
-    else :
-        prime_list(num+1,num*2)
+def total(n):
+    li = prime_list(n)
+    idx = max([i for i in range(len(li)) if li[i]<=n/2])
+    for i in range(idx,-1,-1):
+        for j in range(i,len(li)):
+            if li[i]+li[j]==n:
+                return [li[i],li[j]]
+
+
+test = int(input()) 
+for _ in range(test):
+    a = int(input())
+    print(" ".join(map(str,total(a))))
