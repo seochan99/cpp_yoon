@@ -201,12 +201,51 @@
 
 #에라토스테네스의 체 활용 
 
+# def prime_list(k,n):
+#     n+=1 #n이하의 숫자를 확인해야하므로 ! 
+#     # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
+#     sieve = [True] * n
+#     # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
+#     m = int(n ** 0.5)
+#     for i in range(2, m + 1):
+#         if sieve[i] == True:           # i가 소수인 경우 참 
+#             for j in range(2*i, n, i): # i이후 i의 배수들을 False 판정
+#                 sieve[j] = False
+    
+#     for i in range(k,n):
+#         if i>1 and sieve[i]==True:
+#             print(i)
+
+# m,n = map(int,input().split())
+
+# prime_list(m,n)
+
+#1011 
+# t = int(input())
+
+# for _ in range(t):
+#     x,y = map(int,input().split())
+#     distance = y -x 
+#     num =1 
+#     while True :
+#         if num**2<= distance < (num+1)**2:
+#             break 
+#         num+=1 #제곱수 num찾기 
+#     if num**2 == distance:
+#         print((num*2)-1) 
+#     elif num**2 < distance <= num**2+num:
+#         print(num*2) #절반 
+#     else:
+#         print((num*2)+1)
+
+#4948
 def prime_list(k,n):
     n+=1 #n이하의 숫자를 확인해야하므로 ! 
     # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
     sieve = [True] * n
     # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
     m = int(n ** 0.5)
+    count=0
     for i in range(2, m + 1):
         if sieve[i] == True:           # i가 소수인 경우 참 
             for j in range(2*i, n, i): # i이후 i의 배수들을 False 판정
@@ -214,8 +253,12 @@ def prime_list(k,n):
     
     for i in range(k,n):
         if i>1 and sieve[i]==True:
-            print(i)
+            count+=1
+    print(count)
 
-m,n = map(int,input().split())
-
-prime_list(m,n)
+while True:
+    num = int(input())
+    if num == 0 :
+        break
+    else :
+        prime_list(num+1,num*2)
