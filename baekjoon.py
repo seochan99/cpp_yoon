@@ -296,16 +296,23 @@
 #     print(" ".join(map(str,total(a)))) #join으로 나타내주기 
 
 #1085
-x,y,w,h = map(int,input().split()) # x,y,w,h 값 입력받기 
-xDistance = abs(x-w)
-yDistance = abs(y-h)
-if (x>w/2) and (y>h/2):
-    if xDistance<yDistance:
-        print(xDistance)
-    else :
-        print(yDistance)
-else :
-    if x>y :
-        print(y)
-    else :
-        print(x)
+# x,y,w,h = map(int,input().split()) # x,y,w,h 값 입력받기 
+# print(min(x,y,h-y,w-x))
+
+#3009 
+
+xList=[]
+yList=[]
+#x,y리스트받기 
+for i in range(3):
+    x,y = map(int,input().split())
+    xList.append(x)
+    yList.append(y)
+
+for i in range(3):
+    if xList.count(xList[i]) == 1: #x 1개인 요소 찾기 
+        x = xList[i]
+    if yList.count(yList[i]) == 1: #y 1개인 요소 찾기 
+        y = yList[i]
+
+print(f"{x} {y}")
