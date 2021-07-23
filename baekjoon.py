@@ -114,7 +114,8 @@
 
 # n = int(input())
 # cnt=0 #봉지 최소 갯수 
-# while True: #무한 반복 
+
+# while True: #무한 반복  
 #     if(n%5)==0: #5의배수 
 #         cnt += (n//5)
 #         print(cnt)
@@ -221,22 +222,22 @@
 # prime_list(m,n)
 
 #1011 
-# t = int(input())
+t = int(input())
 
-# for _ in range(t):
-#     x,y = map(int,input().split())
-#     distance = y -x 
-#     num =1 
-#     while True :
-#         if num**2<= distance < (num+1)**2:
-#             break 
-#         num+=1 #제곱수 num찾기 
-#     if num**2 == distance:
-#         print((num*2)-1) 
-#     elif num**2 < distance <= num**2+num:
-#         print(num*2) #절반 
-#     else:
-#         print((num*2)+1)
+for _ in range(t):
+    x,y = map(int,input().split())
+    distance = y -x 
+    num =1 
+    while True :
+        if num**2<= distance < (num+1)**2:
+            break 
+        num+=1 #제곱수 num찾기 
+    if num**2 == distance:
+        print((num*2)-1) 
+    elif num**2 < distance <= num**2+num:
+        print(num*2) #절반 
+    else:
+        print((num*2)+1)
 
 #4948
 # def prime_list(k,n):
