@@ -268,29 +268,44 @@
 
 #9020 : 골드바흐의 추측 
 
-def prime_list(n): #소수 판독기 
-    n+=1 #n이하의 숫자를 확인해야하므로 ! 
-    # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
-    primeList = [True] * n
-    # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
-    m = int(n ** 0.5)
-    for i in range(2, m + 1):
-        if primeList[i] == True:           # i가 소수인 경우 참 
-            for j in range(2*i, n, i): # i이후 i의 배수들을 False 판정
-                primeList[j] = False
+# def prime_list(n): #소수 판독기 
+#     n+=1 #n이하의 숫자를 확인해야하므로 ! 
+#     # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
+#     primeList = [True] * n
+#     # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
+#     m = int(n ** 0.5)
+#     for i in range(2, m + 1):
+#         if primeList[i] == True:           # i가 소수인 경우 참 
+#             for j in range(2*i, n, i): # i이후 i의 배수들을 False 판정
+#                 primeList[j] = False
 
-    return [i for i in range(2,n) if primeList[i]==True] #소수반환  
+#     return [i for i in range(2,n) if primeList[i]==True] #소수반환  
     
 
-def total(n):
-    li = prime_list(n)
-    idx = max([i for i in range(len(li)) if li[i]<=n/2]) #최댓값 li길이 만큼 for 실행 그런데..n/2이하일경우 최대인 인덱스값 출력 
-    for i in range(idx,-1,-1): #인덱스 이하의 배열 요소 접근 
-        for j in range(i,len(li)): #i이상의 배열 요소 접근 
-            if li[i]+li[j]==n: #합 비교 
-                return [li[i],li[j]] #소수 찾기 성공 
+# def total(n):
+#     li = prime_list(n)
+#     idx = max([i for i in range(len(li)) if li[i]<=n/2]) #최댓값 li길이 만큼 for 실행 그런데..n/2이하일경우 최대인 인덱스값 출력 
+#     for i in range(idx,-1,-1): #인덱스 이하의 배열 요소 접근 
+#         for j in range(i,len(li)): #i이상의 배열 요소 접근 
+#             if li[i]+li[j]==n: #합 비교 
+#                 return [li[i],li[j]] #소수 찾기 성공 
 
-test = int(input()) 
-for _ in range(test):
-    a = int(input())
-    print(" ".join(map(str,total(a)))) #join으로 나타내주기 
+# test = int(input()) 
+# for _ in range(test):
+#     a = int(input())
+#     print(" ".join(map(str,total(a)))) #join으로 나타내주기 
+
+#1085
+x,y,w,h = map(int,input().split()) # x,y,w,h 값 입력받기 
+xDistance = abs(x-w)
+yDistance = abs(y-h)
+if (x>w/2) and (y>h/2):
+    if xDistance<yDistance:
+        print(xDistance)
+    else :
+        print(yDistance)
+else :
+    if x>y :
+        print(y)
+    else :
+        print(x)
