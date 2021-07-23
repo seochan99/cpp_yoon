@@ -221,25 +221,25 @@
 
 # prime_list(m,n)
 
-#1011 
-t = int(input())
+# #1011 
+# t = int(input())
 
-for _ in range(t):
-    x,y = map(int,input().split())
-    distance = y -x 
-    num =1 
-    while True :
-        if num**2<= distance < (num+1)**2:
-            break 
-        num+=1 #제곱수 num찾기 
-    if num**2 == distance:
-        print((num*2)-1) 
-    elif num**2 < distance <= num**2+num:
-        print(num*2) #절반 
-    else:
-        print((num*2)+1)
+# for _ in range(t):
+#     x,y = map(int,input().split())
+#     distance = y -x 
+#     num =1 
+#     while True :
+#         if num**2<= distance < (num+1)**2:
+#             break 
+#         num+=1 #제곱수 num찾기 
+#     if num**2 == distance:
+#         print((num*2)-1) 
+#     elif num**2 < distance <= num**2+num:
+#         print(num*2) #절반 
+#     else:
+#         print((num*2)+1)
 
-#4948
+# #4948
 # def prime_list(k,n):
 #     n+=1 #n이하의 숫자를 확인해야하므로 ! 
 #     # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
@@ -271,25 +271,26 @@ for _ in range(t):
 def prime_list(n): #소수 판독기 
     n+=1 #n이하의 숫자를 확인해야하므로 ! 
     # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
-    sieve = [True] * n
+    primeList = [True] * n
     # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
     m = int(n ** 0.5)
     for i in range(2, m + 1):
-        if sieve[i] == True:           # i가 소수인 경우 참 
+        if primeList[i] == True:           # i가 소수인 경우 참 
             for j in range(2*i, n, i): # i이후 i의 배수들을 False 판정
-                sieve[j] = False
-    return [i for i in range(2,n) if sieve[i]==True] #소수반환 
+                primeList[j] = False
+
+    return [i for i in range(2,n) if primeList[i]==True] #소수반환  
+    
 
 def total(n):
     li = prime_list(n)
-    idx = max([i for i in range(len(li)) if li[i]<=n/2])
-    for i in range(idx,-1,-1):
-        for j in range(i,len(li)):
-            if li[i]+li[j]==n:
-                return [li[i],li[j]]
-
+    idx = max([i for i in range(len(li)) if li[i]<=n/2]) #최댓값 li길이 만큼 for 실행 그런데..n/2이하일경우 최대인 인덱스값 출력 
+    for i in range(idx,-1,-1): #인덱스 이하의 배열 요소 접근 
+        for j in range(i,len(li)): #i이상의 배열 요소 접근 
+            if li[i]+li[j]==n: #합 비교 
+                return [li[i],li[j]] #소수 찾기 성공 
 
 test = int(input()) 
 for _ in range(test):
     a = int(input())
-    print(" ".join(map(str,total(a))))
+    print(" ".join(map(str,total(a)))) #join으로 나타내주기 
