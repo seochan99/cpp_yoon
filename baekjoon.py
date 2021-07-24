@@ -301,18 +301,72 @@
 
 #3009 
 
-xList=[]
-yList=[]
-#x,y리스트받기 
-for i in range(3):
-    x,y = map(int,input().split())
-    xList.append(x)
-    yList.append(y)
+# xList=[]
+# yList=[]
+# #x,y리스트받기 
+# for i in range(3):
+#     x,y = map(int,input().split())
+#     xList.append(x)
+#     yList.append(y)
 
-for i in range(3):
-    if xList.count(xList[i]) == 1: #x 1개인 요소 찾기 
-        x = xList[i]
-    if yList.count(yList[i]) == 1: #y 1개인 요소 찾기 
-        y = yList[i]
+# for i in range(3):
+#     if xList.count(xList[i]) == 1: #x 1개인 요소 찾기 
+#         x = xList[i]
+#     if yList.count(yList[i]) == 1: #y 1개인 요소 찾기 
+#         y = yList[i]
 
-print(f"{x} {y}")
+# print(f"{x} {y}")
+
+#4153
+
+# while True :
+#     length = list(map(int,input().split()))
+#     if sum(length)==0:
+#         break
+#     max_len = max(length)
+#     length.remove(max_len) #긴 길이 지우기 
+#     if (length[0]**2 + length[1]**2 == max_len**2):
+#         print("right")
+#     else:
+#         print("wrong")
+
+#3053
+# import math 
+# r = int(input())
+# print(r*r*math.pi)
+# print(r*r*2)
+
+#1002 
+
+# test = int(input())
+# for _ in range(test):
+#     x1,y1,r1,x2,y2,r2 = map(int,input().split())
+#     distance = ((x1-x2)**2 +(y1-y2)**2)**(1/2)
+#     maxR=r1+r2
+#     minR=abs(r1-r2) 
+#     if distance==0:
+#         if r1 == r2: #원이 겹치는 경우 
+#             print(-1) 
+#         else : #원이 접하지 않는 경우 
+#             print(0)
+#     else:
+#         if distance == maxR or distance == minR:
+#             print(1)
+#         elif distance<maxR and distance > minR: # 
+#             print(2)
+#         else : #아예 딴 곳 
+#             print(0) 
+
+
+#10872 : 팩토리얼 
+
+def fact(n):
+    if n==1:
+        return 1
+    return n*fact(n-1)
+
+num = int(input())
+if num==0:
+    print(1)
+else :
+    print(fact(num))
