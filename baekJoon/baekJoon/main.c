@@ -1,16 +1,30 @@
 #include <stdio.h>
-#include <string.h>
+
+int minN(int a, int b)
+{
+    return a < b ? a : b;
+}
+
+int a,b,sum,min = (int)1e9;
 
 int main(void)
 {
-    int num,group=0;
-    char arr[100];
+    scanf("%d %d",&a,&b);
     
-    scanf("%d",&num);
-    for(int i=0;i<num;i++)
+    for(int i=1;i*i<=b;i++)
     {
-        scanf("%s",arr);
-        
+        if(i*i>=a)
+        {
+            min = minN(min,i*i);
+            sum += i*i;
+        }
     }
+    
+    if(sum)
+        printf("%d \n%d\n",sum,min);
+    else
+        printf("-1\n");
+       
+    
     return 0;
 }
