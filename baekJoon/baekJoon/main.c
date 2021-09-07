@@ -52,38 +52,54 @@
 //}
 
 //1417
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int pplNum;
+//    int max = 0, ppl=0;
+//    int arr[1000];
+//
+//    scanf("%d",&pplNum); // 후보자 수 입력
+//
+//    for(int i=0;i<pplNum;i++) // 후보자 특표수 입력
+//    {
+//        scanf("%d",&arr[i]);
+//        if(arr[i]>max)
+//        {
+//            max = arr[i]; //최댓값 저장
+//        }
+//    }
+//    for(int i=1;i<pplNum;i++)
+//    {
+//        if(arr[0]>arr[i])
+//        {
+//            printf("%d",ppl);
+//            break;
+//        }
+//        else
+//        {
+//            arr[i]--;
+//            arr[0]++;
+//        }
+//    }
+//
+//
+//    return 0;
+//}
+
+
 #include <stdio.h>
 
-int main(void)
+int main(int argc,char *argv[])
 {
-    int pplNum;
-    int max = 0, ppl=0;
-    int arr[1000];
+    printf("hi!\n");
+    printf("argc is %d\n",argc);
     
-    scanf("%d",&pplNum); // 후보자 수 입력
-    
-    for(int i=0;i<pplNum;i++) // 후보자 특표수 입력
+    for(int i=0;i<argc;i++)
     {
-        scanf("%d",&arr[i]);
-        if(arr[i]>max)
-        {
-            max = arr[i]; //최댓값 저장
-        }
+        printf("argv[%d] is %s \n",i,argv[i]);
     }
-    for(int i=1;i<pplNum;i++)
-    {
-        if(arr[0]>arr[i])
-        {
-            printf("%d",ppl);
-            break;
-        }
-        else
-        {
-            arr[i]--;
-            arr[0]++;
-        }
-    }
-    
     
     return 0;
 }
