@@ -88,18 +88,59 @@
 //    return 0;
 //}
 
+//
+//#include <stdio.h>
+//
+//int main(int argc,char *argv[])
+//{
+//    printf("hi!\n");
+//    printf("argc is %d\n",argc);
+//
+//    for(int i=0;i<argc;i++)
+//    {
+//        printf("argv[%d] is %s \n",i,argv[i]);
+//    }
+//
+//    return 0;
+//}
+
+//sort or brute force
 
 #include <stdio.h>
 
-int main(int argc,char *argv[])
+int main(void)
 {
-    printf("hi!\n");
-    printf("argc is %d\n",argc);
+    int test;
+    int temp=0;
+    int arr[1000];
     
-    for(int i=0;i<argc;i++)
+    scanf("%d",&test);
+    
+    for(int i=0;i<test;i++)
     {
-        printf("argv[%d] is %s \n",i,argv[i]);
+        scanf("%d",&arr[i]); //입력받기
     }
     
-    return 0;
+    //정렬하기
+    // 버블정렬 활용
+    for(int i=0;i<test;i++)
+    {
+        for(int j=0;j<test-i-1;j++)
+        {
+            if(arr[j]>arr[j+1])
+            {
+                temp = arr[j];
+                
+                arr[j] = arr[j+1];
+                arr[j+1]= temp;
+            }
+        }
+    }
+    for(int i=0;i<test;i++)
+    {
+        printf("%d\n",arr[i]);
+    }
+    
+     
+    
 }
