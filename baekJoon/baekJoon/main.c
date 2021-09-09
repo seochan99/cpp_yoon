@@ -106,41 +106,125 @@
 
 //sort or brute force
 
+//
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int test;
+//    int temp=0;
+//    int arr[1000];
+//
+//    scanf("%d",&test);
+//
+//    for(int i=0;i<test;i++)
+//    {
+//        scanf("%d",&arr[i]); //입력받기
+//    }
+//
+//    //정렬하기
+//    // 버블정렬 활용
+//    for(int i=0;i<test;i++)
+//    {
+//        for(int j=0;j<test-i-1;j++)
+//        {
+//            if(arr[j]>arr[j+1])
+//            {
+//                temp = arr[j];
+//
+//                arr[j] = arr[j+1];
+//                arr[j+1]= temp;
+//            }
+//        }
+//    }
+//    for(int i=0;i<test;i++)
+//    {
+//        printf("%d\n",arr[i]);
+//    }
+//
+//
+//
+//}
+
+//Sort2
+//2751
 #include <stdio.h>
+#include <stdlib.h>
+
+void MergeTwoArea(int arr[],int left, int mid, int right)
+{
+    int fIdx = left;
+    int rIdx = mid + 1;
+    int i;
+    
+    int * sortArr = (int*)malloc(sizeof(int)*(right+1)); // 임시배열 생성
+    int sIdx = left;
+    
+    while(fIdx<=mid && rIdx <= right)
+    {
+        if(arr[fIdx]<=arr[rIdx])
+            sortArr[sIdx] = arr[fIdx++];
+        else
+            sortArr[sIdx] = arr[rIdx++];
+        
+        sIdx++;
+    }
+    
+    if(fIdx>mid)
+    {
+        for(i=rIdx;i<=right;i++,sIdx++)
+            sortArr[sIdx]=arr[i];
+    }
+    else
+    {
+        for(i=fIdx;i<=mid;i++,sIdx++)
+            sortArr[sIdx]=arr[i];
+    }
+    for(i=left;i<=right;i++)
+        arr[i] = sortArr[i];
+    
+    free(sortArr); //해제
+}
+
+
+void MergeSort(int arr[],int left,int right)
+{
+    int mid;
+    
+    if(left<right)
+    {
+        //check mid
+        mid = (left+right)/2;
+        
+        // Divide
+        MergeSort(arr, left, mid);
+        MergeSort(arr, mid+1, right);
+        
+        //Merge
+        MergeTwoArea(arr, left, mid, right);
+    }
+    
+    
+}
+
 
 int main(void)
 {
+    int arr[1000000];
     int test;
-    int temp=0;
-    int arr[1000];
     
     scanf("%d",&test);
     
     for(int i=0;i<test;i++)
     {
-        scanf("%d",&arr[i]); //입력받기
+        scanf("%d",&arr[i]);
     }
     
-    //정렬하기
-    // 버블정렬 활용
-    for(int i=0;i<test;i++)
-    {
-        for(int j=0;j<test-i-1;j++)
-        {
-            if(arr[j]>arr[j+1])
-            {
-                temp = arr[j];
-                
-                arr[j] = arr[j+1];
-                arr[j+1]= temp;
-            }
-        }
-    }
+    MergeSort(arr, 0, test-1);
+    
     for(int i=0;i<test;i++)
     {
         printf("%d\n",arr[i]);
     }
-    
-     
-    
+    return 0;
 }
