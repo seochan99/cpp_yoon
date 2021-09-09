@@ -148,83 +148,112 @@
 
 //Sort2
 //2751
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//void MergeTwoArea(int arr[],int left, int mid, int right)
+//{
+//    int fIdx = left;
+//    int rIdx = mid + 1;
+//    int i;
+//
+//    int * sortArr = (int*)malloc(sizeof(int)*(right+1)); // 임시배열 생성
+//    int sIdx = left;
+//
+//    while(fIdx<=mid && rIdx <= right)
+//    {
+//        if(arr[fIdx]<=arr[rIdx])
+//            sortArr[sIdx] = arr[fIdx++];
+//        else
+//            sortArr[sIdx] = arr[rIdx++];
+//
+//        sIdx++;
+//    }
+//
+//    if(fIdx>mid)
+//    {
+//        for(i=rIdx;i<=right;i++,sIdx++)
+//            sortArr[sIdx]=arr[i];
+//    }
+//    else
+//    {
+//        for(i=fIdx;i<=mid;i++,sIdx++)
+//            sortArr[sIdx]=arr[i];
+//    }
+//    for(i=left;i<=right;i++)
+//        arr[i] = sortArr[i];
+//
+//    free(sortArr); //해제
+//}
+//
+//
+//void MergeSort(int arr[],int left,int right)
+//{
+//    int mid;
+//
+//    if(left<right)
+//    {
+//        //check mid
+//        mid = (left+right)/2;
+//
+//        // Divide
+//        MergeSort(arr, left, mid);
+//        MergeSort(arr, mid+1, right);
+//
+//        //Merge
+//        MergeTwoArea(arr, left, mid, right);
+//    }
+//
+//
+//}
+//
+//
+//int main(void)
+//{
+//    int arr[1000000];
+//    int test;
+//
+//    scanf("%d",&test);
+//
+//    for(int i=0;i<test;i++)
+//    {
+//        scanf("%d",&arr[i]);
+//    }
+//
+//    MergeSort(arr, 0, test-1);
+//
+//    for(int i=0;i<test;i++)
+//    {
+//        printf("%d\n",arr[i]);
+//    }
+//    return 0;
+//}
+
+//sort3
+//10989
+// Quick Sort
+
 #include <stdio.h>
-#include <stdlib.h>
 
-void MergeTwoArea(int arr[],int left, int mid, int right)
-{
-    int fIdx = left;
-    int rIdx = mid + 1;
-    int i;
-    
-    int * sortArr = (int*)malloc(sizeof(int)*(right+1)); // 임시배열 생성
-    int sIdx = left;
-    
-    while(fIdx<=mid && rIdx <= right)
-    {
-        if(arr[fIdx]<=arr[rIdx])
-            sortArr[sIdx] = arr[fIdx++];
-        else
-            sortArr[sIdx] = arr[rIdx++];
-        
-        sIdx++;
-    }
-    
-    if(fIdx>mid)
-    {
-        for(i=rIdx;i<=right;i++,sIdx++)
-            sortArr[sIdx]=arr[i];
-    }
-    else
-    {
-        for(i=fIdx;i<=mid;i++,sIdx++)
-            sortArr[sIdx]=arr[i];
-    }
-    for(i=left;i<=right;i++)
-        arr[i] = sortArr[i];
-    
-    free(sortArr); //해제
-}
-
-
-void MergeSort(int arr[],int left,int right)
-{
-    int mid;
-    
-    if(left<right)
-    {
-        //check mid
-        mid = (left+right)/2;
-        
-        // Divide
-        MergeSort(arr, left, mid);
-        MergeSort(arr, mid+1, right);
-        
-        //Merge
-        MergeTwoArea(arr, left, mid, right);
-    }
-    
-    
-}
-
+int count[10001];
 
 int main(void)
 {
-    int arr[1000000];
-    int test;
-    
+    int test,num;
     scanf("%d",&test);
-    
     for(int i=0;i<test;i++)
     {
-        scanf("%d",&arr[i]);
+        scanf("%d",&num); //num넣기
+        count[num]++; //각 인덱스에 해당하는 값 올려주기 // 삽입되는 숫자가 그 인덱스에 해당하는 값으로 들어감
     }
-    
-    MergeSort(arr, 0, test-1);
-    
-    for(int i=0;i<test;i++)
+    for(int i=0;i<=10000;i++)
     {
-        printf("%d\n",arr[i]);
+        if(count[i]==0)
+            continue;
+        for(int j=0;j<count[i];j++)
+        {
+            printf("%d\n",i);
+        }
     }
     return 0;
 }
