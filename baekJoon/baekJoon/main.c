@@ -232,28 +232,155 @@
 //sort3
 //10989
 // Quick Sort
+//
+//#include <stdio.h>
+//
+//int count[10001];
+//
+//int main(void)
+//{
+//    int test,num;
+//    scanf("%d",&test);
+//    for(int i=0;i<test;i++)
+//    {
+//        scanf("%d",&num); //num넣기
+//        count[num]++; //각 인덱스에 해당하는 값 올려주기 // 삽입되는 숫자가 그 인덱스에 해당하는 값으로 들어감
+//    }
+//    for(int i=0;i<=10000;i++)
+//    {
+//        if(count[i]==0)
+//            continue;
+//        for(int j=0;j<count[i];j++)
+//        {
+//            printf("%d\n",i);
+//        }
+//    }
+//    return 0;
+//}
 
+//2108 : 통계학
 #include <stdio.h>
+#include <stdlib.h>
 
-int count[10001];
+void MergeTwoArea(int arr[],int left, int mid, int right)
+{
+    int fIdx = left;
+    int rIdx = mid + 1;
+    int i;
+
+    int * sortArr = (int*)malloc(sizeof(int)*(right+1)); // 임시배열 생성
+    int sIdx = left;
+
+    while(fIdx<=mid && rIdx <= right)
+    {
+        if(arr[fIdx]<=arr[rIdx])
+            sortArr[sIdx] = arr[fIdx++];
+        else
+            sortArr[sIdx] = arr[rIdx++];
+
+        sIdx++;
+    }
+
+    if(fIdx>mid)
+    {
+        for(i=rIdx;i<=right;i++,sIdx++)
+            sortArr[sIdx]=arr[i];
+    }
+    else
+    {
+        for(i=fIdx;i<=mid;i++,sIdx++)
+            sortArr[sIdx]=arr[i];
+    }
+    for(i=left;i<=right;i++)
+        arr[i] = sortArr[i];
+
+    free(sortArr); //해제
+}
+
+
+void MergeSort(int arr[],int left,int right)
+{
+    int mid;
+
+    if(left<right)
+    {
+        //check mid
+        mid = (left+right)/2;
+
+        // Divide
+        MergeSort(arr, left, mid);
+        MergeSort(arr, mid+1, right);
+
+        //Merge
+        MergeTwoArea(arr, left, mid, right);
+    }
+
+
+}
+
+int arr[8001];
 
 int main(void)
 {
-    int test,num;
-    scanf("%d",&test);
-    for(int i=0;i<test;i++)
+    
+    int num;
+    int sum=0,index =0, count=0;
+    int max=0;
+    int min=4000;
+    int last= 1;
+    scanf("%d",&num);
+    
+    //입력받기
+    for(int i=0;i<num;i++)
     {
-        scanf("%d",&num); //num넣기
-        count[num]++; //각 인덱스에 해당하는 값 올려주기 // 삽입되는 숫자가 그 인덱스에 해당하는 값으로 들어감
+        scanf("%d",&arr[i]);
+        if(arr[i]>=max)
+            max = arr[i];
+        if(arr[i]<=min)
+            min = arr[i];
+        sum+=arr[i];
     }
-    for(int i=0;i<=10000;i++)
-    {
-        if(count[i]==0)
-            continue;
-        for(int j=0;j<count[i];j++)
-        {
-            printf("%d\n",i);
-        }
-    }
-    return 0;
-}
+    //정렬하기
+    MergeSort(arr, 0, num-1);
+
+    //평균 출력
+    printf("%d\n",sum/num);
+    //중앙값 출력
+    printf("%d\n",arr[num/2]);
+    
+//    //최빈값 출력 모르겠다냥..
+    
+//    for(int i=-4000;i<=4000;i++)
+//    {
+//        if(arr[i+4000]>=last)
+//        {
+//            last = arr[i+4000];
+//        }
+//    }
+//    for(int i= -4000;i<=4000;i++)
+//    {
+//        if(arr[i+4000]>=last)
+//        {
+//            last = arr[i+4000];
+//            index = i;
+//            count++;
+//        }
+//        if(count==2)
+//            break;
+//    }
+//    printf("%d\n",index);
+    //범위 출력
+    printf("%d\n",max-min);
+    //
+    
+    
+    //배열 요소 확인
+//    for(int i=0;i<num;i++)
+//              {
+//                  printf("%d\n",arr[i]);
+//              }
+              return 0;
+          }
+//
+    
+    
