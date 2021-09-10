@@ -261,8 +261,6 @@
 //2108 : 통계학
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 4000
-#define MIN -4000
 
 void MergeTwoArea(int arr[],int left, int mid, int right)
 {
@@ -391,9 +389,8 @@ int main(void)
     
     //정렬하기
     MergeSort(arr1, 0, num-1);
-
     //평균 출력
-    printf("%d\n",sum/num);
+    printf("%.0f\n",(double)sum/num);
     //중앙값 출력
     printf("%d\n",arr1[num/2]);
     //최반값
