@@ -261,6 +261,8 @@
 //2108 : 통계학
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX 4000
+#define MIN -4000
 
 void MergeTwoArea(int arr[],int left, int mid, int right)
 {
@@ -318,69 +320,87 @@ void MergeSort(int arr[],int left,int right)
 
 }
 
-int arr[8001];
+int arr1[500001]={0,};
+
+int cnt[8001]={0,};
+
+int maxFinder(int *arr,int size_arr) // 최댓값 찾기
+{
+    int maxN = arr[0];
+    for(int i=0;i<size_arr;i++)
+    {
+        if(maxN<arr[i])
+            maxN=arr[i];
+    }
+    return maxN;
+}
 
 int main(void)
 {
     
     int num;
-    int sum=0,index =0, count=0;
-    int max=0;
+    int sum=0, flags=0;
     int min=4000;
-    int last= 1;
+    int max=-4000;
+    int mode =0;
     scanf("%d",&num);
     
     //입력받기
     for(int i=0;i<num;i++)
     {
-        scanf("%d",&arr[i]);
-        if(arr[i]>=max)
-            max = arr[i];
-        if(arr[i]<=min)
-            min = arr[i];
-        sum+=arr[i];
+        scanf("%d",&arr1[i]);
+        
+        if(arr1[i]>=max)
+            max = arr1[i];
+        if(arr1[i]<=min)
+            min = arr1[i];
+        sum+=arr1[i];
+        
+        //최반값을 위해 인덱스 값 올려주기
+        cnt[arr1[i]+4000]++;
     }
+    for(int i=0;i<8001;i++)
+    {
+        if(maxFinder(cnt, 8001)==cnt[i])
+            flags++;
+    }
+    
+    for(int i=0;i<8001;i++)
+    {
+        if(flags==1)
+        {
+            if(maxFinder(cnt, 8001)==cnt[i])
+            {
+                mode = i-4000;
+                break;
+            }
+        }else
+        {
+            if(maxFinder(cnt, 8001)==cnt[i]){
+                if(flags==0){
+                    mode = i -4000;
+                    break;
+                }
+                else{
+                    flags = 0 ; //0으로 초기화 시키기
+                }
+            }
+        }
+    }
+    
+    
     //정렬하기
-    MergeSort(arr, 0, num-1);
+    MergeSort(arr1, 0, num-1);
 
     //평균 출력
     printf("%d\n",sum/num);
     //중앙값 출력
-    printf("%d\n",arr[num/2]);
-    
-//    //최빈값 출력 모르겠다냥..
-    
-//    for(int i=-4000;i<=4000;i++)
-//    {
-//        if(arr[i+4000]>=last)
-//        {
-//            last = arr[i+4000];
-//        }
-//    }
-//    for(int i= -4000;i<=4000;i++)
-//    {
-//        if(arr[i+4000]>=last)
-//        {
-//            last = arr[i+4000];
-//            index = i;
-//            count++;
-//        }
-//        if(count==2)
-//            break;
-//    }
-//    printf("%d\n",index);
-    //범위 출력
+    printf("%d\n",arr1[num/2]);
+    //최반값
+    printf("%d\n",mode);
+    //범위
     printf("%d\n",max-min);
-    //
-    
-    
-    //배열 요소 확인
-//    for(int i=0;i<num;i++)
-//              {
-//                  printf("%d\n",arr[i]);
-//              }
+
               return 0;
           }
-//
-    
     
