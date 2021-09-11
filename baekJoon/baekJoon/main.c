@@ -259,145 +259,174 @@
 //}
 
 //2108 : 통계학
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//void MergeTwoArea(int arr[],int left, int mid, int right)
+//{
+//    int fIdx = left;
+//    int rIdx = mid + 1;
+//    int i;
+//
+//    int * sortArr = (int*)malloc(sizeof(int)*(right+1)); // 임시배열 생성
+//    int sIdx = left;
+//
+//    while(fIdx<=mid && rIdx <= right)
+//    {
+//        if(arr[fIdx]<=arr[rIdx])
+//            sortArr[sIdx] = arr[fIdx++];
+//        else
+//            sortArr[sIdx] = arr[rIdx++];
+//
+//        sIdx++;
+//    }
+//
+//    if(fIdx>mid)
+//    {
+//        for(i=rIdx;i<=right;i++,sIdx++)
+//            sortArr[sIdx]=arr[i];
+//    }
+//    else
+//    {
+//        for(i=fIdx;i<=mid;i++,sIdx++)
+//            sortArr[sIdx]=arr[i];
+//    }
+//    for(i=left;i<=right;i++)
+//        arr[i] = sortArr[i];
+//
+//    free(sortArr); //해제
+//}
+//
+//
+//void MergeSort(int arr[],int left,int right)
+//{
+//    int mid;
+//
+//    if(left<right)
+//    {
+//        //check mid
+//        mid = (left+right)/2;
+//
+//        // Divide
+//        MergeSort(arr, left, mid);
+//        MergeSort(arr, mid+1, right);
+//
+//        //Merge
+//        MergeTwoArea(arr, left, mid, right);
+//    }
+//}
+//
+//int arr1[500001]={0,};
+//
+//int cnt[8001]={0,};
+//
+//int maxFinder(int *arr,int size_arr) // 최댓값 찾기
+//{
+//    int maxN = arr[0];
+//    for(int i=0;i<size_arr;i++)
+//    {
+//        if(maxN<arr[i])
+//            maxN=arr[i];
+//    }
+//    return maxN;
+//}
+//
+//int main(void)
+//{
+//
+//    int num;
+//    int sum=0, flags=0;
+//    int min=4000;
+//    int max=-4000;
+//    int mode =0;
+//    scanf("%d",&num);
+//
+//    //입력받기
+//    for(int i=0;i<num;i++)
+//    {
+//        scanf("%d",&arr1[i]);
+//
+//        if(arr1[i]>=max)
+//            max = arr1[i];
+//        if(arr1[i]<=min)
+//            min = arr1[i];
+//        sum+=arr1[i];
+//
+//        //최반값을 위해 인덱스 값 올려주기
+//        cnt[arr1[i]+4000]++;
+//    }
+//    for(int i=0;i<8001;i++)
+//    {
+//        if(maxFinder(cnt, 8001)==cnt[i])
+//            flags++;
+//    }
+//
+//    for(int i=0;i<8001;i++)
+//    {
+//        if(flags==1)
+//        {
+//            if(maxFinder(cnt, 8001)==cnt[i])
+//            {
+//                mode = i-4000;
+//                break;
+//            }
+//        }else
+//        {
+//            if(maxFinder(cnt, 8001)==cnt[i]){
+//                if(flags==0){
+//                    mode = i -4000;
+//                    break;
+//                }
+//                else{
+//                    flags = 0 ; //0으로 초기화 시키기
+//                }
+//            }
+//        }
+//    }
+//
+//
+//    //정렬하기
+//    MergeSort(arr1, 0, num-1);
+//    //평균 출력
+//    printf("%.0f\n",(double)sum/num);
+//    //중앙값 출력
+//    printf("%d\n",arr1[num/2]);
+//    //최반값
+//    printf("%d\n",mode);
+//    //범위
+//    printf("%d\n",max-min);
+//
+//              return 0;
+//          }
+//
+
+// 1427 : 소트인사이드
+
 #include <stdio.h>
-#include <stdlib.h>
-
-void MergeTwoArea(int arr[],int left, int mid, int right)
-{
-    int fIdx = left;
-    int rIdx = mid + 1;
-    int i;
-
-    int * sortArr = (int*)malloc(sizeof(int)*(right+1)); // 임시배열 생성
-    int sIdx = left;
-
-    while(fIdx<=mid && rIdx <= right)
-    {
-        if(arr[fIdx]<=arr[rIdx])
-            sortArr[sIdx] = arr[fIdx++];
-        else
-            sortArr[sIdx] = arr[rIdx++];
-
-        sIdx++;
-    }
-
-    if(fIdx>mid)
-    {
-        for(i=rIdx;i<=right;i++,sIdx++)
-            sortArr[sIdx]=arr[i];
-    }
-    else
-    {
-        for(i=fIdx;i<=mid;i++,sIdx++)
-            sortArr[sIdx]=arr[i];
-    }
-    for(i=left;i<=right;i++)
-        arr[i] = sortArr[i];
-
-    free(sortArr); //해제
-}
-
-
-void MergeSort(int arr[],int left,int right)
-{
-    int mid;
-
-    if(left<right)
-    {
-        //check mid
-        mid = (left+right)/2;
-
-        // Divide
-        MergeSort(arr, left, mid);
-        MergeSort(arr, mid+1, right);
-
-        //Merge
-        MergeTwoArea(arr, left, mid, right);
-    }
-
-
-}
-
-int arr1[500001]={0,};
-
-int cnt[8001]={0,};
-
-int maxFinder(int *arr,int size_arr) // 최댓값 찾기
-{
-    int maxN = arr[0];
-    for(int i=0;i<size_arr;i++)
-    {
-        if(maxN<arr[i])
-            maxN=arr[i];
-    }
-    return maxN;
-}
+#include <string.h>
 
 int main(void)
 {
+    char arr[10];
+    char temp;
+    // num string 입력받기
+    scanf("%s",arr);
     
-    int num;
-    int sum=0, flags=0;
-    int min=4000;
-    int max=-4000;
-    int mode =0;
-    scanf("%d",&num);
-    
-    //입력받기
-    for(int i=0;i<num;i++)
+    //버블정렬 진행
+    for(int i=0;i<strlen(arr);i++)
     {
-        scanf("%d",&arr1[i]);
-        
-        if(arr1[i]>=max)
-            max = arr1[i];
-        if(arr1[i]<=min)
-            min = arr1[i];
-        sum+=arr1[i];
-        
-        //최반값을 위해 인덱스 값 올려주기
-        cnt[arr1[i]+4000]++;
-    }
-    for(int i=0;i<8001;i++)
-    {
-        if(maxFinder(cnt, 8001)==cnt[i])
-            flags++;
-    }
-    
-    for(int i=0;i<8001;i++)
-    {
-        if(flags==1)
+        for(int j=0;j<strlen(arr)-i-1;j++)
         {
-            if(maxFinder(cnt, 8001)==cnt[i])
+            if(arr[j]<arr[j+1])
             {
-                mode = i-4000;
-                break;
-            }
-        }else
-        {
-            if(maxFinder(cnt, 8001)==cnt[i]){
-                if(flags==0){
-                    mode = i -4000;
-                    break;
-                }
-                else{
-                    flags = 0 ; //0으로 초기화 시키기
-                }
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                
             }
         }
     }
+    printf("%s\n",arr);
     
-    
-    //정렬하기
-    MergeSort(arr1, 0, num-1);
-    //평균 출력
-    printf("%.0f\n",(double)sum/num);
-    //중앙값 출력
-    printf("%d\n",arr1[num/2]);
-    //최반값
-    printf("%d\n",mode);
-    //범위
-    printf("%d\n",max-min);
-
-              return 0;
-          }
-    
+    return 0;
+}
