@@ -401,32 +401,128 @@
 //
 
 // 1427 : 소트인사이드
+//
+//#include <stdio.h>
+//#include <string.h>
+//
+//int main(void)
+//{
+//    char arr[10];
+//    char temp;
+//    // num string 입력받기
+//    scanf("%s",arr);
+//
+//    //버블정렬 진행
+//    for(int i=0;i<strlen(arr);i++)
+//    {
+//        for(int j=0;j<strlen(arr)-i-1;j++)
+//        {
+//            if(arr[j]<arr[j+1])
+//            {
+//                temp = arr[j];
+//                arr[j] = arr[j+1];
+//                arr[j+1] = temp;
+//
+//            }
+//        }
+//    }
+//    printf("%s\n",arr);
+//
+//    return 0;
+//}
 
+
+// 11650 : 좌표 정렬하기
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
-int main(void)
+typedef struct{
+    int x;
+    int y;
+}Point; //구조체 생성
+
+Point sort[100000]; //구조체배열 선언
+
+
+void MergeTwoArea(Point* arr,int left, int mid, int right)
 {
-    char arr[10];
-    char temp;
-    // num string 입력받기
-    scanf("%s",arr);
-    
-    //버블정렬 진행
-    for(int i=0;i<strlen(arr);i++)
+    int fIdx = left;
+    int rIdx = mid + 1;
+    int i;
+
+    int * sortArr = (int*)malloc(sizeof(int)*(right+1)); // 임시배열 생성
+    int sIdx = left;
+
+    while(fIdx<=mid && rIdx <= right)
     {
-        for(int j=0;j<strlen(arr)-i-1;j++)
+        if(arr[fIdx].x<arr[rIdx].x)
+            sortArr[sIdx] = arr[fIdx++].x;
+        else if(arr[fIdx].x>arr[rIdx].x)
+            sortArr[sIdx] = arr[rIdx++].x;
+        else //x값 동일할때 y값 비교
         {
-            if(arr[j]<arr[j+1])
+            if(arr[fIdx].y<arr[rIdx].y)
             {
-                temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
-                
+                sortArr[sIdx] = arr[fIdx++];
+            }
+            else if(arr[fIdx].y>arr[rIdx].y)
+            {
+                sortArr[sIdx] = arr[rIdx++];
             }
         }
+
+        sIdx++;
     }
-    printf("%s\n",arr);
+
+    if(fIdx>mid)
+    {
+        for(i=rIdx;i<=right;i++,sIdx++)
+            sortArr[sIdx]=arr[i].x;
+    }
+    else
+    {
+        for(i=fIdx;i<=mid;i++,sIdx++)
+            sortArr[sIdx]=arr[i].x;
+    }
+    for(i=left;i<=right;i++)
+        arr[i].x = sortArr[i].x;
+
+    free(sortArr); //해제
+}
+
+
+void MergeSort(int arr[],int left,int right)
+{
+    int mid;
+
+    if(left<right)
+    {
+        //check mid
+        mid = (left+right)/2;
+
+        // Divide
+        MergeSort(arr, left, mid);
+        MergeSort(arr, mid+1, right);
+
+        //Merge
+        MergeTwoArea(arr, left, mid, right);
+    }
+}
+int main(void)
+{
+    int num;
+    scanf("%d",&num);
+    
+    
+    for(int i=0;i<num;i++)
+    {
+        scanf("%d %d",&arr[i].x,&arr[i].y); //구조체 입력받기
+    }
+    
+    //정렬
+    MergeSort(arr1, 0, num-1);
+
+    
     
     return 0;
 }
