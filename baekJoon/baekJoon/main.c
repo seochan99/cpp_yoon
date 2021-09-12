@@ -603,13 +603,6 @@ void MergeTwoArea(String*arr,int left, int mid, int right)
                 sortArr[sIdx] = arr[fIdx++];
             else
                 sortArr[sIdx] = arr[rIdx++];
-//                (strcmp(arr[fIdx].english,arr[rIdx].english)>0)
-                
-//            else //문자열이 같을때
-//            {
-//                sortArr[sIdx] = arr[fIdx++];
-//                rIdx++;
-//            }
         }
         sIdx++;
     }
