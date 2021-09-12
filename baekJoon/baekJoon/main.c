@@ -450,7 +450,7 @@
 //{
 //    int num;
 //    scanf("%d",&num);
-//    
+//
 //    //구조체 변수 동적할당
 //    Point*arr =(Point*)malloc(sizeof(Point)*num);
 //    for(int i=0;i<num;i++)
@@ -463,9 +463,9 @@
 //    for(int i=0;i<num;i++){
 //        printf("%d %d \n",arr[i].x,arr[i].y);
 //    }
-//    
+//
 //    free(arr); // 동적할당해제
-//    
+//
 //    return 0;
 //}
 //void MergeTwoArea(Point*arr,int left, int mid, int right)
@@ -527,3 +527,125 @@
 //        MergeTwoArea(arr, left, mid, right);
 //    }
 //}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct _Strings
+{
+    char english[50]; // 영어 문자열
+    int length;
+    
+}String;
+
+void MergeTwoArea(String arr[],int left, int mid, int right);
+void MergeSort(String*arr,int left,int right);
+
+
+int main(void)
+{
+    int num;
+    
+    scanf("%d",&num);
+    
+    //구조체 동적할당
+    String*arr =(String*)malloc(sizeof(String)*num);
+    
+    //입력받기
+    for(int i=0;i<num;i++)
+    {
+        scanf("%s",arr[i].english);
+
+        //문자열 길이 저장
+        arr[i].length = strlen(arr[i].english);
+    }
+    //정렬
+    MergeSort(arr, 0, num-1);
+    
+    //출력
+    for(int i=0;i<num;i++)
+    {
+        if(i==0)
+            printf("%s\n",arr[i].english);
+        else
+        {
+            if(strcmp(arr[i].english, arr[i-1].english)!=0) //이전요소랑 비교해서 strcmp가 0이아니면 출력
+                printf("%s\n",arr[i].english);
+        }
+        
+    }
+    
+    //동적할당 해제
+    free(arr);
+    return 0;
+}
+
+void MergeTwoArea(String*arr,int left, int mid, int right)
+{
+    int fIdx = left;
+    int rIdx = mid + 1;
+    int i;
+
+    String * sortArr = (String*)malloc(sizeof(String)*(right+1)); // 임시 구조체 배열 생성
+    int sIdx = left;
+
+    while(fIdx<=mid && rIdx <= right)
+    {
+        if(arr[fIdx].length<arr[rIdx].length)
+            sortArr[sIdx] = arr[fIdx++];
+        else if(arr[fIdx].length>arr[rIdx].length)
+            sortArr[sIdx] = arr[rIdx++];
+        else //길이가 같을때
+        {
+            
+            if(strcmp(arr[fIdx].english,arr[rIdx].english)<0)
+                sortArr[sIdx] = arr[fIdx++];
+            else
+                sortArr[sIdx] = arr[rIdx++];
+//                (strcmp(arr[fIdx].english,arr[rIdx].english)>0)
+                
+//            else //문자열이 같을때
+//            {
+//                sortArr[sIdx] = arr[fIdx++];
+//                rIdx++;
+//            }
+        }
+        sIdx++;
+    }
+
+    if(fIdx>mid)
+    {
+        for(i=rIdx;i<=right;i++,sIdx++)
+            sortArr[sIdx]=arr[i];
+    }
+    else
+    {
+        for(i=fIdx;i<=mid;i++,sIdx++)
+            sortArr[sIdx]=arr[i];
+    }
+    for(i=left;i<=right;i++)
+        arr[i] = sortArr[i];
+
+    free(sortArr); //해제
+}
+
+
+void MergeSort(String*arr,int left,int right)
+{
+    int mid;
+
+    if(left<right)
+    {
+        //check mid
+        mid = (left+right)/2;
+
+        // Divide
+        MergeSort(arr, left, mid);
+        MergeSort(arr, mid+1, right);
+
+        //Merge
+        MergeTwoArea(arr, left, mid, right);
+    }
+}
+
