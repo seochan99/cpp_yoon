@@ -644,98 +644,139 @@
 //
 
 // 10814 : 나이순 정렬
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//
+//typedef struct _Strings
+//{
+//    char name[102]; // 영어 문자열
+//    int age;
+//
+//}String;
+//
+//void MergeTwoArea(String arr[],int left, int mid, int right);
+//void MergeSort(String*arr,int left,int right);
+//
+//
+//int main(void)
+//{
+//    int num;
+//
+//    scanf("%d",&num);
+//
+//    //구조체 동적할당
+//    String*arr =(String*)malloc(sizeof(String)*num);
+//
+//    //입력받기
+//    for(int i=0;i<num;i++)
+//        scanf("%d %s",&arr[i].age,arr[i].name);
+//    //정렬
+//    MergeSort(arr, 0, num-1);
+//
+//    //출력
+//    for(int i=0;i<num;i++)
+//    {
+//        printf("%d %s\n",arr[i].age,arr[i].name);
+//
+//    }
+//
+//    //동적할당 해제
+//    free(arr);
+//    return 0;
+//}
+//
+//void MergeTwoArea(String*arr,int left, int mid, int right)
+//{
+//    int fIdx = left;
+//    int rIdx = mid + 1;
+//    int i;
+//
+//    String * sortArr = (String*)malloc(sizeof(String)*(right+1)); // 임시 구조체 배열 생성
+//    int sIdx = left;
+//
+//    while(fIdx<=mid && rIdx <= right)
+//    {
+//        if(arr[fIdx].age<=arr[rIdx].age)
+//            sortArr[sIdx] = arr[fIdx++];
+//        else
+//            sortArr[sIdx] = arr[rIdx++];
+//        sIdx++;
+//    }
+//
+//    if(fIdx>mid)
+//    {
+//        for(i=rIdx;i<=right;i++,sIdx++)
+//            sortArr[sIdx]=arr[i];
+//    }
+//    else
+//    {
+//        for(i=fIdx;i<=mid;i++,sIdx++)
+//            sortArr[sIdx]=arr[i];
+//    }
+//    for(i=left;i<=right;i++)
+//        arr[i] = sortArr[i];
+//
+//    free(sortArr); //해제
+//}
+//
+//
+//void MergeSort(String*arr,int left,int right)
+//{
+//    int mid;
+//
+//    if(left<right)
+//    {
+//        //check mid
+//        mid = (left+right)/2;
+//
+//        // Divide
+//        MergeSort(arr, left, mid);
+//        MergeSort(arr, mid+1, right);
+//
+//        //Merge
+//        MergeTwoArea(arr, left, mid, right);
+//    }
+//}
+//
+
+// 18870 : 좌표압축
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-typedef struct _Strings
-{
-    char name[102]; // 영어 문자열
-    int age;
-    
-}String;
-
-void MergeTwoArea(String arr[],int left, int mid, int right);
-void MergeSort(String*arr,int left,int right);
-
+typedef struct point{
+    int number;
+    int compressNumber;
+}Point;
 
 int main(void)
 {
     int num;
-    
     scanf("%d",&num);
     
-    //구조체 동적할당
-    String*arr =(String*)malloc(sizeof(String)*num);
-    
-    //입력받기
-    for(int i=0;i<num;i++)
-        scanf("%d %s",&arr[i].age,arr[i].name);
-    //정렬
-    MergeSort(arr, 0, num-1);
-    
-    //출력
+    Point*arr=(Point*)malloc(sizeof(Point)*num);
     for(int i=0;i<num;i++)
     {
-        printf("%d %s\n",arr[i].age,arr[i].name);
-        
+        scanf("%d",&arr[i].number);
+        arr[i].compressNumber = 0;
     }
     
-    //동적할당 해제
+    for(int i=0;i<num;i++)
+    {
+        for(int j=0;j<num;j++)
+        {
+            if(arr[i].number>arr[j].number)
+            {
+                arr[i].compressNumber++;
+            }
+        }
+    }
+    
+    for(int i=0;i<num;i++)
+    {
+        printf("%d ",arr[i].compressNumber);
+    }
+    
     free(arr);
     return 0;
 }
-
-void MergeTwoArea(String*arr,int left, int mid, int right)
-{
-    int fIdx = left;
-    int rIdx = mid + 1;
-    int i;
-
-    String * sortArr = (String*)malloc(sizeof(String)*(right+1)); // 임시 구조체 배열 생성
-    int sIdx = left;
-
-    while(fIdx<=mid && rIdx <= right)
-    {
-        if(arr[fIdx].age<=arr[rIdx].age)
-            sortArr[sIdx] = arr[fIdx++];
-        else
-            sortArr[sIdx] = arr[rIdx++];
-        sIdx++;
-    }
-
-    if(fIdx>mid)
-    {
-        for(i=rIdx;i<=right;i++,sIdx++)
-            sortArr[sIdx]=arr[i];
-    }
-    else
-    {
-        for(i=fIdx;i<=mid;i++,sIdx++)
-            sortArr[sIdx]=arr[i];
-    }
-    for(i=left;i<=right;i++)
-        arr[i] = sortArr[i];
-
-    free(sortArr); //해제
-}
-
-
-void MergeSort(String*arr,int left,int right)
-{
-    int mid;
-
-    if(left<right)
-    {
-        //check mid
-        mid = (left+right)/2;
-
-        // Divide
-        MergeSort(arr, left, mid);
-        MergeSort(arr, mid+1, right);
-
-        //Merge
-        MergeTwoArea(arr, left, mid, right);
-    }
-}
-
