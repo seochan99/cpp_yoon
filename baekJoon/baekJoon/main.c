@@ -432,97 +432,98 @@
 //}
 
 
-// 11650 : 좌표 정렬하기
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct _point{
-    int x;
-    int y;
-}Point;
-
-void MergeTwoArea(Point*arr,int left, int mid, int right);
-void MergeSort(Point*arr,int left,int right);
-
-
-int main(void)
-{
-    int num;
-    scanf("%d",&num);
-    
-    //구조체 변수 동적할당
-    Point*arr =(Point*)malloc(sizeof(Point)*num);
-    for(int i=0;i<num;i++)
-    {
-        scanf("%d %d",&arr[i].x,&arr[i].y); //할당받은 배열에 삽입
-    }
-    //정렬
-    MergeSort(arr, 0, num-1);
-    //출력
-    for(int i=0;i<num;i++){
-        printf("%d %d \n",arr[i].x,arr[i].y);
-    }
-    
-    free(arr); // 동적할당해제
-    
-    return 0;
-}
-void MergeTwoArea(Point*arr,int left, int mid, int right)
-{
-    int fIdx = left;
-    int rIdx = mid + 1;
-    int i;
-
-    Point * sortArr = (Point*)malloc(sizeof(Point)*(right+1)); // 임시 구조체 배열 생성
-    int sIdx = left;
-
-    while(fIdx<=mid && rIdx <= right)
-    {
-        if(arr[fIdx].x<arr[rIdx].x)
-            sortArr[sIdx] = arr[fIdx++];
-        else if(arr[fIdx].x>arr[rIdx].x)
-            sortArr[sIdx] = arr[rIdx++];
-        else
-        {
-            if(arr[fIdx].y<arr[rIdx].y)
-                sortArr[sIdx] = arr[fIdx++];
-            else
-                sortArr[sIdx] = arr[rIdx++];
-        }
-        sIdx++;
-    }
-
-    if(fIdx>mid)
-    {
-        for(i=rIdx;i<=right;i++,sIdx++)
-            sortArr[sIdx]=arr[i];
-    }
-    else
-    {
-        for(i=fIdx;i<=mid;i++,sIdx++)
-            sortArr[sIdx]=arr[i];
-    }
-    for(i=left;i<=right;i++)
-        arr[i] = sortArr[i];
-
-    free(sortArr); //해제
-}
-
-
-void MergeSort(Point*arr,int left,int right)
-{
-    int mid;
-
-    if(left<right)
-    {
-        //check mid
-        mid = (left+right)/2;
-
-        // Divide
-        MergeSort(arr, left, mid);
-        MergeSort(arr, mid+1, right);
-
-        //Merge
-        MergeTwoArea(arr, left, mid, right);
-    }
-}
+// 11650 : 좌표 정렬하기 1. x->y
+// 11651 : 좌표 정렬하기 2  y->x
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//typedef struct _point{
+//    int x;
+//    int y;
+//}Point;
+//
+//void MergeTwoArea(Point arr[],int left, int mid, int right);
+//void MergeSort(Point*arr,int left,int right);
+//
+//
+//int main(void)
+//{
+//    int num;
+//    scanf("%d",&num);
+//    
+//    //구조체 변수 동적할당
+//    Point*arr =(Point*)malloc(sizeof(Point)*num);
+//    for(int i=0;i<num;i++)
+//    {
+//        scanf("%d %d",&arr[i].x,&arr[i].y); //할당받은 배열에 삽입
+//    }
+//    //정렬
+//    MergeSort(arr, 0, num-1);
+//    //출력
+//    for(int i=0;i<num;i++){
+//        printf("%d %d \n",arr[i].x,arr[i].y);
+//    }
+//    
+//    free(arr); // 동적할당해제
+//    
+//    return 0;
+//}
+//void MergeTwoArea(Point*arr,int left, int mid, int right)
+//{
+//    int fIdx = left;
+//    int rIdx = mid + 1;
+//    int i;
+//
+//    Point * sortArr = (Point*)malloc(sizeof(Point)*(right+1)); // 임시 구조체 배열 생성
+//    int sIdx = left;
+//
+//    while(fIdx<=mid && rIdx <= right)
+//    {
+//        if(arr[fIdx].y<arr[rIdx].y)
+//            sortArr[sIdx] = arr[fIdx++];
+//        else if(arr[fIdx].y>arr[rIdx].y)
+//            sortArr[sIdx] = arr[rIdx++];
+//        else
+//        {
+//            if(arr[fIdx].x<arr[rIdx].x)
+//                sortArr[sIdx] = arr[fIdx++];
+//            else
+//                sortArr[sIdx] = arr[rIdx++];
+//        }
+//        sIdx++;
+//    }
+//
+//    if(fIdx>mid)
+//    {
+//        for(i=rIdx;i<=right;i++,sIdx++)
+//            sortArr[sIdx]=arr[i];
+//    }
+//    else
+//    {
+//        for(i=fIdx;i<=mid;i++,sIdx++)
+//            sortArr[sIdx]=arr[i];
+//    }
+//    for(i=left;i<=right;i++)
+//        arr[i] = sortArr[i];
+//
+//    free(sortArr); //해제
+//}
+//
+//
+//void MergeSort(Point*arr,int left,int right)
+//{
+//    int mid;
+//
+//    if(left<right)
+//    {
+//        //check mid
+//        mid = (left+right)/2;
+//
+//        // Divide
+//        MergeSort(arr, left, mid);
+//        MergeSort(arr, mid+1, right);
+//
+//        //Merge
+//        MergeTwoArea(arr, left, mid, right);
+//    }
+//}
