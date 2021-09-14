@@ -741,42 +741,81 @@
 //
 
 // 18870 : 좌표압축
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//typedef struct point{
+//    int number;
+//    int compressNumber;
+//}Point;
+//
+//int main(void)
+//{
+//    int num;
+//    scanf("%d",&num);
+//
+//    Point*arr=(Point*)malloc(sizeof(Point)*num);
+//    for(int i=0;i<num;i++)
+//    {
+//        scanf("%d",&arr[i].number);
+//        arr[i].compressNumber = 0;
+//        arr[i].same =0;
+//    }
+//
+//    for(int i=0;i<num;i++)
+//    {
+//        for(int j=0;j<num;j++)
+//        {
+//            if(arr[i].number>arr[j].number)
+//            {
+//                arr[i].compressNumber++;
+//            }
+//        }
+//    }
+//
+//    for(int i=0;i<num;i++)
+//    {
+//        printf("%d ",arr[i].compressNumber);
+//    }
+//
+//    free(arr);
+//    return 0;
+//}
+
 #include <stdio.h>
-#include <stdlib.h>
 
-typedef struct point{
-    int number;
-    int compressNumber;
-}Point;
+int n,m;
+int result[1000];
+int check[1000];
 
-int main(void)
+void DFS(int depth)
 {
-    int num;
-    scanf("%d",&num);
+    int i;
     
-    Point*arr=(Point*)malloc(sizeof(Point)*num);
-    for(int i=0;i<num;i++)
+    if(depth==m)
     {
-        scanf("%d",&arr[i].number);
-        arr[i].compressNumber = 0;
+        for(int i=0;i<m;i++)
+            printf("%d ",result[i]);
+        printf("\n");
     }
-    
-    for(int i=0;i<num;i++)
+    else
     {
-        for(int j=0;j<num;j++)
+        for(i=1;i<=n;i++)
         {
-            if(arr[i].number>arr[j].number)
+            if(check[i]==0)
             {
-                arr[i].compressNumber++;
+                result[depth]=i;
+                check[i]=1;
+                DFS(depth+1);
+                check[i]=0;
             }
         }
     }
-    
-    for(int i=0;i<num;i++)
-    {
-        printf("%d ",arr[i].compressNumber);
-    }
-    
-    free(arr);
+}
+
+int main(void)
+{
+    scanf("%d %d",&n,&m);
+    DFS(0);
     return 0;
 }
