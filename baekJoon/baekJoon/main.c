@@ -898,108 +898,141 @@
 //
 
 //10828 : 스택
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//
+//#define TRUE 1
+//#define FALSE 0
+//#define STACK_LEN 10000
+//
+//typedef int Data;
+//
+//typedef struct stack{
+//    Data stackArr[STACK_LEN];
+//    int topIndex;
+//}Stack;
+//
+//void stackInit(Stack * pstack); // init
+//int SIsEmpty(Stack * pstack); // empty
+//
+//void SPush(Stack * pstack, Data data); //push
+//Data SPop(Stack * pstack); // pop
+//Data SSize(Stack * pstack);
+//Data SPeek(Stack * pstack); //top
+//
+//int main(void)
+//{
+//    int num;
+//    char str[6];
+//    int newNum;
+//    //스택생성,초기화
+//    Stack stack;
+//    stackInit(&stack);
+//
+//    scanf("%d",&num);
+//    for(int i=0;i<num;i++)
+//    {
+//        scanf("%s",str);
+//        if(!strcmp(str, "push"))//같으면 0출력
+//        {
+//            scanf("%d",&newNum);
+//            SPush(&stack, newNum);
+//        }
+//        else if(!strcmp(str, "pop"))
+//        {
+//            printf("%d\n",SPop(&stack));
+//        }
+//        else if(!strcmp(str, "size"))
+//        {
+//            printf("%d\n",SSize(&stack));
+//        }
+//        else if(!strcmp(str, "empty"))
+//        {
+//            printf("%d\n",SIsEmpty(&stack));
+//        }
+//        else if(!strcmp(str, "top"))
+//        {
+//            printf("%d\n",SPeek(&stack));
+//        }
+//    }
+//    return 0;
+//}
+//
+//void stackInit(Stack * pstack)
+//{
+//    pstack->topIndex = -1; //빈상태
+//}
+//
+//int SIsEmpty(Stack * pstack)
+//{
+//    if(pstack->topIndex == -1) //빔
+//        return TRUE;
+//    else
+//        return FALSE;
+//}
+//
+//void SPush(Stack * pstack, Data data)
+//{
+//    pstack->stackArr[++(pstack->topIndex)] = data; // 데이터 저장
+//}
+//Data SSize(Stack * pstack)
+//{
+//    return pstack->topIndex+1;
+//}
+//
+//Data SPop(Stack * pstack)
+//{
+////    int rIdx;
+//    if(SIsEmpty(pstack))
+//    {
+//        return -1;
+//    }
+////    rIdx = pstack->topIndex; //삭제할 데이터 저장
+////    pstack->topIndex -= 1;
+////    return pstack->stackArr[rIdx]; // 삭제되는 값 반환
+//    return pstack->stackArr[(pstack->topIndex)--]; // 한줄코딩
+//}
+//
+//Data SPeek(Stack * pstack)
+//{
+//    if(SIsEmpty(pstack))
+//    {
+//        return -1;
+//    }
+//
+//    return pstack->stackArr[pstack->topIndex]; // 맨위 저장된 값 반환
+//}
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define TRUE 1
-#define FALSE 0
-#define STACK_LEN 10000
-
-typedef int Data;
-
-typedef struct stack{
-    Data stackArr[STACK_LEN];
-    int topIndex;
-}Stack;
-
-void stackInit(Stack * pstack); // init
-int SIsEmpty(Stack * pstack); // empty
-
-void SPush(Stack * pstack, Data data); //push
-Data SPop(Stack * pstack); // pop
-Data SSize(Stack * pstack);
-Data SPeek(Stack * pstack); //top
+int top=0;
+char arr[1001], stack[1001];
 
 int main(void)
 {
-    int num;
-    char str[6];
-    int newNum;
-    //스택생성,초기화
-    Stack stack;
-    stackInit(&stack);
-    
-    scanf("%d",&num);
-    for(int i=0;i<num;i++)
+    int t;
+    scanf("%d ",&t);
+    for(int i=0;i<t;i++) //반복문 실행
     {
-        scanf("%s",str);
-        if(!strcmp(str, "push"))//같으면 0출력
+        fgets(arr, 1001, stdin); //문장입력받기
+        for(int i=0;i<strlen(arr)-1;i++)
         {
-            scanf("%d",&newNum);
-            SPush(&stack, newNum);
+            if(arr[i]!=' ')
+            {
+                stack[top++] = arr[i];
+            }
+                
+            if(arr[i]==' ' || i==strlen(arr)-2)
+            {
+                for(int i=top-1;i>=0;i--)
+                    printf("%c",stack[i]);
+                printf(" ");
+                top=0;
+            }
         }
-        else if(!strcmp(str, "pop"))
-        {
-            printf("%d\n",SPop(&stack));
-        }
-        else if(!strcmp(str, "size"))
-        {
-            printf("%d\n",SSize(&stack));
-        }
-        else if(!strcmp(str, "empty"))
-        {
-            printf("%d\n",SIsEmpty(&stack));
-        }
-        else if(!strcmp(str, "top"))
-        {
-            printf("%d\n",SPeek(&stack));
-        }
+        printf("\n");
     }
     return 0;
-}
-
-void stackInit(Stack * pstack)
-{
-    pstack->topIndex = -1; //빈상태
-}
-
-int SIsEmpty(Stack * pstack)
-{
-    if(pstack->topIndex == -1) //빔
-        return TRUE;
-    else
-        return FALSE;
-}
-
-void SPush(Stack * pstack, Data data)
-{
-    pstack->stackArr[++(pstack->topIndex)] = data; // 데이터 저장
-}
-Data SSize(Stack * pstack)
-{
-    return pstack->topIndex+1;
-}
-
-Data SPop(Stack * pstack)
-{
-//    int rIdx;
-    if(SIsEmpty(pstack))
-    {
-        return -1;
-    }
-//    rIdx = pstack->topIndex; //삭제할 데이터 저장
-//    pstack->topIndex -= 1;
-//    return pstack->stackArr[rIdx]; // 삭제되는 값 반환
-    return pstack->stackArr[(pstack->topIndex)--]; // 한줄코딩
-}
-
-Data SPeek(Stack * pstack)
-{
-    if(SIsEmpty(pstack))
-    {
-        return -1;
-    }
-    
-    return pstack->stackArr[pstack->topIndex]; // 맨위 저장된 값 반환
 }
