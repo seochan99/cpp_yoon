@@ -1003,36 +1003,70 @@
 //
 //    return pstack->stackArr[pstack->topIndex]; // 맨위 저장된 값 반환
 //}
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//
+//int top=0;
+//char arr[1001], stack[1001];
+//
+//int main(void)
+//{
+//    int t;
+//    scanf("%d ",&t);
+//    for(int i=0;i<t;i++) //반복문 실행
+//    {
+//        fgets(arr, 1001, stdin); //문장입력받기
+//        for(int i=0;i<strlen(arr)-1;i++)
+//        {
+//            if(arr[i]!=' ')
+//            {
+//                stack[top++] = arr[i];
+//            }
+//
+//            if(arr[i]==' ' || i==strlen(arr)-2)
+//            {
+//                for(int i=top-1;i>=0;i--)
+//                    printf("%c",stack[i]);
+//                printf(" ");
+//                top=0;
+//            }
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-
-int top=0;
-char arr[1001], stack[1001];
-
-int main(void)
+int main()
 {
-    int t;
-    scanf("%d ",&t);
-    for(int i=0;i<t;i++) //반복문 실행
-    {
-        fgets(arr, 1001, stdin); //문장입력받기
-        for(int i=0;i<strlen(arr)-1;i++)
-        {
-            if(arr[i]!=' ')
-            {
-                stack[top++] = arr[i];
+    int test;
+    scanf("%d", &test);
+    char arr[50];
+    
+    for(int i=0; i<test; i++){
+        int cnt = 0;
+        scanf("%s", arr);
+        
+        for(int j=0; j<strlen(arr); j++){
+            
+            if(cnt<0){
+                break;
             }
-                
-            if(arr[i]==' ' || i==strlen(arr)-2)
-            {
-                for(int i=top-1;i>=0;i--)
-                    printf("%c",stack[i]);
-                printf(" ");
-                top=0;
+            
+            if(arr[j]=='('){
+                cnt++;
+            }else{
+                cnt--;
             }
+
         }
-        printf("\n");
+        if(cnt==0){
+            printf("YES\n");
+        }else
+        {
+            printf("NO\n");
+        }
     }
     return 0;
 }
