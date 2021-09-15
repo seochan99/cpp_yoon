@@ -1036,37 +1036,117 @@
 //    }
 //    return 0;
 //}
-#include <stdio.h>
-#include <string.h>
-int main()
-{
-    int test;
-    scanf("%d", &test);
-    char arr[50];
-    
-    for(int i=0; i<test; i++){
-        int cnt = 0;
-        scanf("%s", arr);
-        
-        for(int j=0; j<strlen(arr); j++){
-            
-            if(cnt<0){
-                break;
-            }
-            
-            if(arr[j]=='('){
-                cnt++;
-            }else{
-                cnt--;
-            }
 
-        }
-        if(cnt==0){
-            printf("YES\n");
+//9012
+//#include <stdio.h>
+//#include <string.h>
+//int main()
+//{
+//    int test;
+//    scanf("%d", &test);
+//    char arr[50];
+//
+//    for(int i=0; i<test; i++){
+//        int cnt = 0;
+//        scanf("%s", arr);
+//
+//        for(int j=0; j<strlen(arr); j++){
+//
+//            if(cnt<0){
+//                break;
+//            }
+//
+//            if(arr[j]=='('){
+//                cnt++;
+//            }else{
+//                cnt--;
+//            }
+//
+//        }
+//        if(cnt==0){
+//            printf("YES\n");
+//        }else
+//        {
+//            printf("NO\n");
+//        }
+//    }
+//    return 0;
+//}
+
+//10773 : 제로
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define STACK_LEN 100000
+int sum=0;
+typedef int Data;
+
+typedef struct stack{
+    Data stackArr[STACK_LEN];
+    int topIndex;
+}Stack;
+
+void stackInit(Stack * pstack); // init
+int SIsEmpty(Stack * pstack); // empty
+
+void SPush(Stack * pstack, Data data); //push
+void SPop(Stack * pstack); // pop
+Data SSum(Stack * pstack);
+
+int main(void)
+{
+    int num;
+
+    int newNum;
+    //스택생성,초기화
+    Stack stack;
+    stackInit(&stack);
+
+    scanf("%d",&num);
+    for(int i=0;i<num;i++)
+    {
+        scanf("%d",&newNum);
+        if(newNum!=0)
+        {
+            SPush(&stack, newNum);
+            
         }else
         {
-            printf("NO\n");
+            SPop(&stack); //빼기
         }
     }
+//    for(int i=0;i<=stack.topIndex;i++)
+//    {
+//        sum+=stack.stackArr[i];
+//    }
+    
+    printf("%d\n",SSum(&stack));
     return 0;
+}
+
+void stackInit(Stack * pstack)
+{
+    pstack->topIndex = -1; //빈상태
+}
+
+
+void SPush(Stack * pstack, Data data)
+{
+    pstack->stackArr[++(pstack->topIndex)] = data; // 데이터 저장
+}
+
+void SPop(Stack * pstack)
+{
+    pstack->topIndex -= 1;
+}
+//
+Data SSum(Stack * pstack)
+{
+    for(int i=0;i<=pstack->topIndex;i++)
+    {
+        sum+=pstack->stackArr[i];
+    }
+    return sum;
 }
