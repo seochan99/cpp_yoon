@@ -1074,79 +1074,180 @@
 //}
 
 //10773 : 제로
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define STACK_LEN 100000
-int sum=0;
-typedef int Data;
-
-typedef struct stack{
-    Data stackArr[STACK_LEN];
-    int topIndex;
-}Stack;
-
-void stackInit(Stack * pstack); // init
-int SIsEmpty(Stack * pstack); // empty
-
-void SPush(Stack * pstack, Data data); //push
-void SPop(Stack * pstack); // pop
-Data SSum(Stack * pstack);
-
-int main(void)
-{
-    int num;
-
-    int newNum;
-    //스택생성,초기화
-    Stack stack;
-    stackInit(&stack);
-
-    scanf("%d",&num);
-    for(int i=0;i<num;i++)
-    {
-        scanf("%d",&newNum);
-        if(newNum!=0)
-        {
-            SPush(&stack, newNum);
-            
-        }else
-        {
-            SPop(&stack); //빼기
-        }
-    }
-//    for(int i=0;i<=stack.topIndex;i++)
-//    {
-//        sum+=stack.stackArr[i];
-//    }
-    
-    printf("%d\n",SSum(&stack));
-    return 0;
-}
-
-void stackInit(Stack * pstack)
-{
-    pstack->topIndex = -1; //빈상태
-}
-
-
-void SPush(Stack * pstack, Data data)
-{
-    pstack->stackArr[++(pstack->topIndex)] = data; // 데이터 저장
-}
-
-void SPop(Stack * pstack)
-{
-    pstack->topIndex -= 1;
-}
 //
-Data SSum(Stack * pstack)
-{
-    for(int i=0;i<=pstack->topIndex;i++)
-    {
-        sum+=pstack->stackArr[i];
-    }
-    return sum;
-}
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//
+//#define STACK_LEN 100000
+//int sum=0;
+//typedef int Data;
+//
+//typedef struct stack{
+//    Data stackArr[STACK_LEN];
+//    int topIndex;
+//}Stack;
+//
+//void stackInit(Stack * pstack); // init
+//int SIsEmpty(Stack * pstack); // empty
+//
+//void SPush(Stack * pstack, Data data); //push
+//void SPop(Stack * pstack); // pop
+//Data SSum(Stack * pstack);
+//
+//int main(void)
+//{
+//    int num;
+//
+//    int newNum;
+//    //스택생성,초기화
+//    Stack stack;
+//    stackInit(&stack);
+//
+//    scanf("%d",&num);
+//    for(int i=0;i<num;i++)
+//    {
+//        scanf("%d",&newNum);
+//        if(newNum!=0)
+//        {
+//            SPush(&stack, newNum);
+//
+//        }else
+//        {
+//            SPop(&stack); //빼기
+//        }
+//    }
+//
+//    printf("%d\n",SSum(&stack));
+//    return 0;
+//}
+//
+//void stackInit(Stack * pstack)
+//{
+//    pstack->topIndex = -1; //빈상태
+//}
+//
+//
+//void SPush(Stack * pstack, Data data)
+//{
+//    pstack->stackArr[++(pstack->topIndex)] = data; // 데이터 저장
+//}
+//
+//void SPop(Stack * pstack)
+//{
+//    pstack->topIndex -= 1;
+//}
+////
+//Data SSum(Stack * pstack)
+//{
+//    for(int i=0;i<=pstack->topIndex;i++)
+//    {
+//        sum+=pstack->stackArr[i];
+//    }
+//    return sum;
+//}
+
+// 4949 :균형잡힌 세상
+
+
+
+
+
+// 예제 1
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int a,b,c,d;
+//    int sum=0;
+//    float avg=0;
+//
+//    scanf("%d %d %d %d",&a,&b,&c,&d);
+//
+//    sum=a+b+c+d;
+//    avg = sum/4;
+//    avg = sum/4; -> avg = (float)/4.0;
+//    printf("국어 : %d \n",a);
+//    printf("수학 : %d \n",b);
+//    printf("영어 : %d \n",c);
+//    printf("과학 : %d \n",d);
+//
+//
+//    printf("총합 : %d\n",sum);
+//    printf("평균 : %0.2f\n",avg);
+//
+//    return 0;
+//}
+
+//예제2
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    printf(" 문자열 : %s\n","아ㅏㅇ아ㅏ");
+//    printf(" 문자 1개 : %c\n",'A');
+//    printf("%d\n",-4);
+//    printf("%u\n",5);
+//
+//
+//    return 0;
+//}
+//
+//gcc ./main.c
+//./a out
+//
+
+//예제 3
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    //사각형 넓이
+//    int a,b,c,d;
+//    float t=0;
+//
+//    printf("사각형의 가로 세로를 입력하시오. \n");
+//    scanf("%d %d",&a,&b);
+//    printf("직각 삼각형의 밑변, 높이를 입력하시오.\n ");
+//    scanf("%d %d",&c,&d);
+//
+//    t=(float)(c*d/2);
+//    printf("사각형의 넓이 : %d \n",a*b);
+//    printf("삼각형의 넓이 : %0.2f \n",t);
+//
+//
+//    return 0;
+//}
+//
+
+//예제 4
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int height;
+//    int weight;
+//    float bmi = 0;
+//
+//    printf("체중을 입력하시오. \n");
+//    scanf("%d",&weight);
+//    printf("신장을 입력하시오. \n");
+//    scanf("%d",&height);
+//
+//    bmi=height/weight;
+//
+//    if(bmi>=30)
+//    {
+//        printf("비만\n");
+//    }else if(bmi>=25 && bmi<=29)
+//    {
+//        printf("과체중\n");
+//    }else if(bmi>=20 && bmi<=24)
+//    {
+//        printf("정상\n");
+//    }
+//    else{
+//        printf("저체중\n");
+//    }
+//    return 0;
+//}
