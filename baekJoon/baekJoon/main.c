@@ -1417,116 +1417,116 @@
 //    free(delNode);
 //    return retData; // 삭제되는 데이터 값 반환
 //}
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define TRUE 1
-#define FALSE 0
-
-#define QUE_LEN 2000001
-typedef int Data;
-
-typedef struct _cQueue
-{
-    int front;
-    int rear;
-    Data queArr[QUE_LEN];
-}Queue;
-
-void QueueInit(Queue * pq)
-{
-    pq->front = 0;
-    pq->rear = 0;
-}
-
-int QIsEmpty(Queue * pq)
-{
-    if(pq->front == pq->rear)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-int front(Queue *pq)
-{
-    if(QIsEmpty(pq))
-    {
-        return -1;
-    }
-    return pq->queArr[pq->front+1];
-}
-
-int back(Queue *pq)
-{
-    if(QIsEmpty(pq))
-    {
-        return -1;
-    }
-    return pq->queArr[pq->rear];
-}
-
-
-void Enqueue(Queue * pq, Data data)
-{
-    pq->rear = (pq->rear + 1) % QUE_LEN;
-    pq->queArr[pq->rear] = data;
-}
-
-Data Dequeue(Queue * pq)
-{
-    if(QIsEmpty(pq))
-    {
-        return -1;
-    }
-
-    pq->front = (pq->front+1)%QUE_LEN;
-    return pq->queArr[pq->front];
-}
-
-int size(Queue *pq)
-{
-        return pq->rear - pq->front;
-}
-
-int main(void)
-{
-    Queue q;
-    char str[6];
-    int newNum;
-    QueueInit(&q);
-
-    int num;
-    scanf("%d",&num);
-        for(int i=0;i<num;i++)
-        {
-            scanf("%s",str);
-            if(!strcmp(str, "push"))//같으면 0출력
-            {
-                scanf("%d",&newNum);
-                Enqueue(&q, newNum);
-            }
-            else if(!strcmp(str, "pop"))
-            {
-                printf("%d\n",Dequeue(&q));
-            }
-            else if(!strcmp(str, "size"))
-            {
-                printf("%d\n",size(&q));
-            }
-            else if(!strcmp(str, "empty"))
-            {
-                printf("%d\n",QIsEmpty(&q));
-            }
-            else if(!strcmp(str, "front"))
-            {
-                printf("%d\n",front(&q));
-            }
-            else if(!strcmp(str, "back"))
-            {
-                printf("%d\n",back(&q));
-            }
-        }
-    return 0;
-}
+//
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//
+//#define TRUE 1
+//#define FALSE 0
+//
+//#define QUE_LEN 2000001
+//typedef int Data;
+//
+//typedef struct _cQueue
+//{
+//    int front;
+//    int rear;
+//    Data queArr[QUE_LEN];
+//}Queue;
+//
+//void QueueInit(Queue * pq)
+//{
+//    pq->front = 0;
+//    pq->rear = 0;
+//}
+//
+//int QIsEmpty(Queue * pq)
+//{
+//    if(pq->front == pq->rear)
+//        return TRUE;
+//    else
+//        return FALSE;
+//}
+//
+//int front(Queue *pq)
+//{
+//    if(QIsEmpty(pq))
+//    {
+//        return -1;
+//    }
+//    return pq->queArr[pq->front+1];
+//}
+//
+//int back(Queue *pq)
+//{
+//    if(QIsEmpty(pq))
+//    {
+//        return -1;
+//    }
+//    return pq->queArr[pq->rear];
+//}
+//
+//
+//void Enqueue(Queue * pq, Data data)
+//{
+//    pq->rear = (pq->rear + 1) % QUE_LEN;
+//    pq->queArr[pq->rear] = data;
+//}
+//
+//Data Dequeue(Queue * pq)
+//{
+//    if(QIsEmpty(pq))
+//    {
+//        return -1;
+//    }
+//
+//    pq->front = (pq->front+1)%QUE_LEN;
+//    return pq->queArr[pq->front];
+//}
+//
+//int size(Queue *pq)
+//{
+//        return pq->rear - pq->front;
+//}
+//
+//int main(void)
+//{
+//    Queue q;
+//    char str[6];
+//    int newNum;
+//    QueueInit(&q);
+//
+//    int num;
+//    scanf("%d",&num);
+//        for(int i=0;i<num;i++)
+//        {
+//            scanf("%s",str);
+//            if(!strcmp(str, "push"))//같으면 0출력
+//            {
+//                scanf("%d",&newNum);
+//                Enqueue(&q, newNum);
+//            }
+//            else if(!strcmp(str, "pop"))
+//            {
+//                printf("%d\n",Dequeue(&q));
+//            }
+//            else if(!strcmp(str, "size"))
+//            {
+//                printf("%d\n",size(&q));
+//            }
+//            else if(!strcmp(str, "empty"))
+//            {
+//                printf("%d\n",QIsEmpty(&q));
+//            }
+//            else if(!strcmp(str, "front"))
+//            {
+//                printf("%d\n",front(&q));
+//            }
+//            else if(!strcmp(str, "back"))
+//            {
+//                printf("%d\n",back(&q));
+//            }
+//        }
+//    return 0;
+//}
