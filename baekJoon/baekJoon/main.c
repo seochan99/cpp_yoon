@@ -1530,3 +1530,339 @@
 //        }
 //    return 0;
 //}
+//
+//#include <stdio.h>
+//
+//int main(int argc,char *argv[])
+//{
+//    int ko,math,eng;
+//    int sum=0;
+//    double avg = 0;
+//    char rank;
+//
+//    scanf("%d %d %d",&ko,&math,&eng);
+//    sum=ko+math+eng;
+//
+//    avg =(double)sum/3;
+//
+//    if(avg>=90)
+//        rank ='A';
+//    else if(avg>=80)
+//        rank ='B';
+//    else if(avg>=70)
+//        rank ='C';
+//    else
+//        rank ='F';
+//
+//    switch (rank) {
+//        case 'A':
+//            printf("excellent!\n");
+//            break;
+//        case 'B':
+//            printf("great\n");
+//            break;
+//        case 'C':
+//            printf("good!\n");
+//            break;
+//        default:
+//            printf("bad...\n");
+//            break;
+//    }
+//    switch ((int)avg/10) {
+//        case 10:
+//        case 9:
+//            printf("excellent!\n");
+//            break;
+//        case 'C':
+//            printf("good!\n");
+//            break;
+//        default:
+//            printf("bad...\n");
+//            break;
+//    }
+//    return 0;
+//}
+//#include <stdio.h>
+//
+//int main(int argc,char *argv[])
+//{
+//    int year;
+//
+//    scanf("%d",&year);
+//    switch (((year%4==0)&&(year%100!=0))||(year%400==0)) {
+//        case 1:
+//            printf("%d 윤년 \n",year);
+//            break;
+//        case 2:
+//            printf("%d 평년아님 \n",year);
+//        default:
+//            break;
+//    }
+//
+//    return 0;
+//}
+// 과제 1
+//#include <stdio.h>
+//
+//int main(int argc,char *argv[])
+//{
+//    int year,month,day;
+//    int total =365;
+//    int flag = 0;
+//
+//    printf("\"연도\"를 입력하세요. >> ");
+//    scanf("%d",&year);
+//
+//    if(!(year>=1900&&year<=2999))
+//    {
+//        printf("잘못된 값을 입력하셨습니다.\n");
+//        return 0;
+//    }
+//
+//    printf("\"월\"를 입력하세요. >> ");
+//    scanf("%d",&month);
+//    if(!(month>=1&&month<=12))
+//    {
+//        printf("잘못된 값을 입력하셨습니다.\n");
+//        return 0;
+//    }
+//    printf("\"일\"를 입력하세요. >> ");
+//    scanf("%d",&day);
+//
+//
+//    if(((year%4==0)&&(year%100!=0))||(year%400==0)) //윤년 체크
+//    {
+//        flag=1; //윤년
+//        total+=1; //366일
+//    }
+//
+//    if(month==2&&flag==0) //2월 평년
+//    {
+//        if(!(day>=1&&day<=28))
+//        {
+//            printf("잘못된 값을 입력하셨습니다.\n");
+//            return 0;
+//        }
+//    }
+//    else if(month==2&&flag==1) // 2월 윤년
+//    {
+//        if(!(day>=1&&day<=29))
+//        {
+//            printf("잘못된 값을 입력하셨습니다.\n");
+//            return 0;
+//        }
+//    }
+//    else if((month==4||month==6||month==9||month==11)) //30일
+//    {
+//        if(!(day>=1&&day<=30))
+//        {
+//            printf("잘못된 값을 입력하셨습니다.\n");
+//            return 0;
+//        }
+//    }
+//    else
+//    {
+//        if(!(day>=1&&day<=31))
+//        {
+//            printf("잘못된 값을 입력하셨습니다.\n");
+//            return 0;
+//        }
+//    }
+//
+//
+//// switch
+//
+//    switch (month)
+//    {
+//        case 1:
+//            if (month==1)
+//            {
+//                day = 31-day;
+//                total-=day;
+//            }
+//            else
+//                total-=31;
+//        case 2:
+//            if(flag==1)//윤년
+//            {
+//                if (month==2)
+//                {
+//                    day = 29-day;
+//                    total-=day;
+//                }
+//                else
+//                    total-=29;
+//            }else // 평년
+//            {
+//                if (month==2)
+//                {
+//                    day = 28-day;
+//                    total-=day;
+//                }
+//                else
+//                    total-=28;
+//            }
+//        case 3:
+//            if (month==3)
+//            {
+//                day = 31-day;
+//                total-=day;
+//            }
+//            else
+//                total-=31;
+//        case 4:
+//            if (month==4)
+//            {
+//                day=30-day;
+//                total-=day;
+//            }
+//            else
+//                total-=30;
+//        case 5:
+//            if (month==5)
+//            {
+//                day = 31-day;
+//                total-=day;
+//            }
+//            else
+//                total-=31;
+//        case 6:
+//            if (month==6)
+//            {
+//                day=30-day;
+//                total-=day;
+//            }
+//            else
+//                total-=30;
+//        case 7:
+//            if (month==7)
+//            {
+//                day = 31-day;
+//                total-=day;
+//            }
+//            else
+//                total-=31;
+//        case 8:
+//            if (month==8)
+//            {
+//                day = 31-day;
+//                total-=day;
+//            }
+//            else
+//                total-=31;
+//        case 9:
+//            if (month==9)
+//            {
+//                day=30-day;
+//                total-=day;
+//            }
+//            else
+//                total-=30;
+//        case 10:
+//            if (month==10)
+//            {
+//                day = 31-day;
+//                total-=day;
+//            }
+//            else
+//                total-=31;
+//        case 11:
+//            if (month==11)
+//            {
+//                day=30-day;
+//                total-=day;
+//            }
+//            else
+//                total-=30;
+//        case 12:
+//            if (month==12)
+//            {
+//                day = 31-day;
+//                total-=day;
+//            }
+//            else
+//                total-=31;
+//            break;
+//    }
+////        //total -> 반복문 없애기..
+////        for(i=1;i<month;i++)
+////        {
+////            if(i==2)//2월
+////            {
+////                if(flag==1) //윤년
+////                    total+=29;
+////                else//평년
+////                    total+=28;
+////            }
+////            else if(i==4||i==6||i==9||i==11) //30일
+////                total+=30;
+////            else
+////                total+=31;
+////        }
+//
+//
+//    printf("%d년 01월 01일부터 %d일째 되는 날입니다.\n",year,total);
+//
+//
+//    return 0;
+//}
+
+
+// 과제 2
+#include <stdio.h>
+int main(int argc, char * argv[])
+{
+    while (1) {
+        
+    int n;
+    printf("5이상의 n을 입력해서 집을 만드세요 ! \n");
+    printf("n : ");
+    scanf("%d",&n);
+    // 잘못된 값 입력
+    if(n<5)
+    {
+        printf("5이상 입력하라고\n");
+        return 0;
+    }
+    // 지붕 출력
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n-i-1; j++)
+            printf(" ");
+        for(int k=0; k<2*i+1; k++)
+            printf("*");
+        for(int j=0; j<n-i-1; j++)
+            printf(" ");
+        printf(" **"); //굴뚝 출력
+         
+        printf("\n");
+    }
+    for(int i=0;i<n;i++)
+    {
+        //중간에 창문 만들어주기
+        if(i>=n/2-1 && i<n-1)
+        {
+            //나머지 별 출력
+            for (int j=0;j<=2*n+1;j++)
+            {
+                //창문 집 크기에 따라 비율 늘려주기.. !
+                if(2*n/2+1<=j && j<2*n-1)
+                    printf("O");
+                else
+                    printf("*");
+            }
+            printf("\n");
+            continue;
+        }
+        for (int j=0;j<=2*n+1;j++)
+        {
+            printf("*");
+        }
+
+        
+        printf("\n");
+    }
+    }
+    return 0;
+}
+
