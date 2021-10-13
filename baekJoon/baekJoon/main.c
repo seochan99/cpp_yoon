@@ -1815,25 +1815,31 @@ int main(int argc, char * argv[])
     while (1) {
         
     int n;
+    char home;
     printf("5이상의 n을 입력해서 집을 만드세요 ! \n");
     printf("n : ");
     scanf("%d",&n);
+    printf("출력할 문자를 입력하세요 : ");
+    scanf("%c",&home);
+    getchar();
+        
     // 잘못된 값 입력
     if(n<5)
     {
         printf("5이상 입력하라고\n");
         return 0;
     }
+        
     // 지붕 출력
     for(int i=0; i<n; i++)
     {
         for(int j=0; j<n-i-1; j++)
             printf(" ");
         for(int k=0; k<2*i+1; k++)
-            printf("*");
+            printf("%c",home);
         for(int j=0; j<n-i-1; j++)
             printf(" ");
-        printf(" **"); //굴뚝 출력
+        printf(" %c%c",home,home); //굴뚝 출력
          
         printf("\n");
     }
@@ -1847,16 +1853,16 @@ int main(int argc, char * argv[])
             {
                 //창문 집 크기에 따라 비율 늘려주기.. !
                 if(2*n/2+1<=j && j<2*n-1)
-                    printf("O");
+                    printf(" ");
                 else
-                    printf("*");
+                    printf("%c",home);
             }
             printf("\n");
             continue;
         }
         for (int j=0;j<=2*n+1;j++)
         {
-            printf("*");
+            printf("%c",home);
         }
 
         
