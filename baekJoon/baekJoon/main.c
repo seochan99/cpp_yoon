@@ -1809,31 +1809,98 @@
 
 
 // 과제 2
+//#include <stdio.h>
+//int main(int argc, char * argv[])
+//{
+//    while (1) {
+//
+//    int n;
+//    int window=1;
+//    char home;
+//
+//    printf("5이상의 n을 입력해서 집을 만드세요 ! \n");
+//    printf("n : ");
+//    scanf("%d",&n);
+//    // 잘못된 값 입력
+//    if(n<5)
+//    {
+//        printf("5이상 입력하라고\n");
+//        return 0;
+//    }
+//    printf("출력할 문자를 입력하세요 : ");
+//    scanf(" %c",&home);
+//
+//
+//
+//
+//    // 지붕 출력
+//    for(int i=0; i<n; i++)
+//    {
+//        for(int j=0; j<n-i-1; j++)
+//            printf(" ");
+//        for(int k=0; k<2*i+1; k++)
+//            printf("%c",home);
+//        for(int j=0; j<n-i-1; j++)
+//            printf(" ");
+//        printf(" %c%c",home,home); //굴뚝 출력
+//
+//        printf("\n");
+//    }
+//
+//    for(int i=0;i<n;i++)
+//    {
+//
+//        //중간에 창문 만들어주기
+//        if(i>=n/3-1 && i<n-window)
+//        {
+//            window++;
+//            //나머지 별 출력
+//            for (int j=0;j<=2*n+1;j++)
+//            {
+//                //창문 집 크기에 따라 비율 늘려주기.. !
+//                if(2*n/3+1<=j && j<2*n-1)
+//                    printf(" ");
+//                else
+//                    printf("%c",home);
+//            }
+//
+//            printf("\n");
+//            continue;
+//        }
+//        for (int j=0;j<=2*n+1;j++)
+//        {
+//            printf("%c",home);
+//        }
+//
+//
+//        printf("\n");
+//    }
+//    }
+//    return 0;
+//}
+
 #include <stdio.h>
+
 int main(int argc, char * argv[])
 {
-    while (1) {
-        
     int n;
-    int window=1;
+    int window=0;
     char home;
+
     printf("5이상의 n을 입력해서 집을 만드세요 ! \n");
     printf("n : ");
     scanf("%d",&n);
-    
+
     if(n<5)
     {
-        printf("5이상 입력하라고\n");
+        printf("5이상 입력하세요.\n");
         return 0;
     }
-        getchar();
-    printf("출력할 문자를 입력하세요 : ");
-    scanf("%c",&home);
-    getchar();
-        
-    // 잘못된 값 입력
 
-        
+    printf("출력할 문자를 입력하세요 : ");
+    scanf(" %c",&home);
+
+
     // 지붕 출력
     for(int i=0; i<n; i++)
     {
@@ -1844,26 +1911,26 @@ int main(int argc, char * argv[])
         for(int j=0; j<n-i-1; j++)
             printf(" ");
         printf(" %c%c",home,home); //굴뚝 출력
-         
+
         printf("\n");
     }
+
+
     for(int i=0;i<n;i++)
     {
-        
         //중간에 창문 만들어주기
-        if(i>=n/2-1 && i<n-window)
+        if(i>=n/3 && i<n-window)
         {
             window++;
             //나머지 별 출력
             for (int j=0;j<=2*n+1;j++)
             {
                 //창문 집 크기에 따라 비율 늘려주기.. !
-                if(2*n/2+1<=j && j<2*n-1)
+                if(2*n/3<=j && j<2*n-2)
                     printf(" ");
                 else
                     printf("%c",home);
             }
-            
             printf("\n");
             continue;
         }
@@ -1872,9 +1939,8 @@ int main(int argc, char * argv[])
             printf("%c",home);
         }
 
-        
+
         printf("\n");
-    }
     }
     return 0;
 }
