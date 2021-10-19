@@ -1976,4 +1976,29 @@
 //    return 0;
 //}
 
-// 도전 
+// 도전 1-2
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int num1,num2;
+//    int temp = 0;
+//    scanf("%d %d",&num1,&num2);
+//    if(num1>num2)
+//        {
+//            temp = num1;
+//            num1 = num2;
+//            num2 = temp;
+//        }
+//    for(int i = num1;i<=num2;i++)
+//    {
+//        for(int j=1;j<10;j++)
+//        {
+//            printf("%d X %d = %d\n",i,j,i*j);
+//        }
+//        printf("\n");
+//    }
+//
+//
+//    return 0;
+//}
