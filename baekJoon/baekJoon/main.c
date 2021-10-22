@@ -2021,59 +2021,132 @@
 //    return 0;
 //}
 // 도전 1-4
-#include <stdio.h>
-
-int main(void)
-{
-    int money = 3500;
-    int num1 = 500;
-    int num2 = 700;
-    int num3 = 400;
-    
-    for(int i =1 ;i<100;i++)
-    {
-        for(int j =1;j<100;j++)
-        {
-            for(int k=1;k<100;k++)
-            {
-                if((i*num1)+(j*num2)+(k*num3)==money)
-                    printf("크림 : %d 새우 : %d 콜라 : %d\n",i,j,k);
-            }
-        }
-    }
-    return 0;
-}
-
-
 //#include <stdio.h>
-//// 한수 : 각자릿수가 등차수열을 이룬다
-//void HanSoo(int n) //셀프넘어 아닌 숫자 구하는 함수
-//{
-//    int total = 99;
-//    int a,b,c;
-//    if(n<100)
-//    {
-//        printf("%d",n);
-//    }else
-//    {
-//    for(int i=100;i<=n;i++) // 100이하일때는 모두 성립한다.
-//    {
-//        a=i/100; //100의 자리수
-//        b=i/10%10; // 10의 자리수
-//        c = i % 10; // 1의 자리수
 //
-//        if((b-a)==(c-b))
-//            total++;
+//int main(void)
+//{
+//    int money = 3500;
+//    int num1 = 500;
+//    int num2 = 700;
+//    int num3 = 400;
+//
+//    for(int i =1 ;i<100;i++)
+//    {
+//        for(int j =1;j<100;j++)
+//        {
+//            for(int k=1;k<100;k++)
+//            {
+//                if((i*num1)+(j*num2)+(k*num3)==money)
+//                    printf("크림 : %d 새우 : %d 콜라 : %d\n",i,j,k);
+//            }
+//        }
 //    }
-//        printf("%d\n",total);
-//    }
+//    return 0;
 //}
+
+// 도전 1-5 : 10개의 소수 출력
+//#include <stdio.h>
 //
 //
 //int main(void)
 //{
-//    int n;
-//    scanf("%d",&n);
-//    HanSoo(n);
+//    int cnt=0;
+//    for(int i=2;cnt<10;i++)
+//    {
+//        for(int j=2;j<=i;j++)
+//        {
+//            if(i%j==0&&j!=i) //나눠지는 수가 있다.
+//                break;
+//            else if(i==j)
+//            {
+//                printf("%d ",i);
+//                cnt+=1;
+//            }
+//            else
+//                continue;
+//        }
+//        cnt++;
+//    }
+//
 //    return 0;
 //}
+//
+//
+////#include <stdio.h>
+////// 한수 : 각자릿수가 등차수열을 이룬다
+////void HanSoo(int n) //셀프넘어 아닌 숫자 구하는 함수
+////{
+////    int total = 99;
+////    int a,b,c;
+////    if(n<100)
+////    {
+////        printf("%d",n);
+////    }else
+////    {
+////    for(int i=100;i<=n;i++) // 100이하일때는 모두 성립한다.
+////    {
+////        a=i/100; //100의 자리수
+////        b=i/10%10; // 10의 자리수
+////        c = i % 10; // 1의 자리수
+////
+////        if((b-a)==(c-b))
+////            total++;
+////    }
+////        printf("%d\n",total);
+////    }
+////}
+////
+////
+////int main(void)
+////{
+////    int n;
+////    scanf("%d",&n);
+////    HanSoo(n);
+////    return 0;
+////}
+//
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    short a=1;
+//    short b=2;
+//    printf("%d\n",sizeof(a));
+//    printf("%d\n",sizeof(b));
+//    printf("%d\n",sizeof(a+b));
+//}
+
+#include <stdio.h>
+
+int lcm(int num1,int num2)
+{
+    int total = 1;
+    for(int i=2;i<=num1+1;i++)
+    {
+        if((i>num1)||(i>num2))
+        {
+            total = total * num1 * num2;
+            return total;
+        }
+        if((num1%i==0)&&(num2%i==0)) // 나눠진다
+        {
+            num1 = num1/i;
+            num2 = num2/i;
+            total*=i;
+            i =1;
+        }
+    }
+    return 1;
+}
+
+int main(void)
+{
+    int num1,num2;
+    int num3=0;
+    scanf("%d %d",&num1,&num2);
+    
+    num3=lcm(num1,num2);
+    printf("%d\n",num3);
+    
+    return 0;
+}
