@@ -2116,37 +2116,46 @@
 //    printf("%d\n",sizeof(a+b));
 //}
 
+//#include <stdio.h>
+//
+//int lcm(int num1,int num2)
+//{
+//    int total = 1;
+//    for(int i=2;i<=num1+1;i++)
+//    {
+//        if((i>num1)||(i>num2))
+//        {
+//            total = total * num1 * num2;
+//            return total;
+//        }
+//        if((num1%i==0)&&(num2%i==0)) // 나눠진다
+//        {
+//            num1 = num1/i;
+//            num2 = num2/i;
+//            total*=i;
+//            i =1;
+//        }
+//    }
+//    return 1;
+//}
+//
+//int main(void)
+//{
+//    int num1,num2;
+//    int num3=0;
+//    scanf("%d %d",&num1,&num2);
+//
+//    num3=lcm(num1,num2);
+//    printf("%d\n",num3);
+//
+//    return 0;
+//}
+
 #include <stdio.h>
-
-int lcm(int num1,int num2)
-{
-    int total = 1;
-    for(int i=2;i<=num1+1;i++)
-    {
-        if((i>num1)||(i>num2))
-        {
-            total = total * num1 * num2;
-            return total;
-        }
-        if((num1%i==0)&&(num2%i==0)) // 나눠진다
-        {
-            num1 = num1/i;
-            num2 = num2/i;
-            total*=i;
-            i =1;
-        }
-    }
-    return 1;
+int main(void){
+    printf("%c학점 이상입니다.\n",'A');
+    printf("학점을 유지하고 자격증을 준비하세요. \n\n");
+    
+    printf("%c학점 이상이고 %c학점보다 낮습니다.",'B','A');
 }
 
-int main(void)
-{
-    int num1,num2;
-    int num3=0;
-    scanf("%d %d",&num1,&num2);
-    
-    num3=lcm(num1,num2);
-    printf("%d\n",num3);
-    
-    return 0;
-}
