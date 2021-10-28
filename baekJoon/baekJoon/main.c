@@ -2150,12 +2150,120 @@
 //
 //    return 0;
 //}
+//
+//#include <stdio.h>
+//int main(void){
+//    printf("%c학점 이상입니다.\n",'A');
+//    printf("학점을 유지하고 자격증을 준비하세요. \n\n");
+//
+//    printf("%c학점 이상이고 %c학점보다 낮습니다.",'B','A');
+//}
+//
 
 #include <stdio.h>
-int main(void){
-    printf("%c학점 이상입니다.\n",'A');
-    printf("학점을 유지하고 자격증을 준비하세요. \n\n");
-    
-    printf("%c학점 이상이고 %c학점보다 낮습니다.",'B','A');
+#include <stdlib.h>
+#include <time.h>
+
+//메뉴판 출력함수
+int menu(void)
+{
+    int num;
+    printf("1. 가위/바위/보 게임\n");
+    printf("2. 랜덤넘버 맞추기 게임\n");
+    printf("3. 종료\n");
+    scanf("%d",&num);
+    return num;
 }
 
+//렌덤함수
+int rand_func(int max_num)
+{
+    srand((unsigned)time(NULL));
+    return rand()%max_num+1;
+}
+
+//가위바위보 함수
+void RSP(void)
+{
+    int computerNum=rand_func(3);
+    int userNum;
+    printf("1.가위 2.바위 3.보자기 선택해주세요 ! \n");
+    scanf("%d",&userNum);
+    // 1:가위 2:바위 3:보
+    
+    //컴퓨터가 졌을때
+    if(((userNum==1)&&(computerNum==3))||((userNum==2)&&(computerNum==1))||((userNum==3)&&(computerNum==2)))
+    {
+        printf("유저가 승리했습니다.\n");
+    }
+    else if(((userNum==1)&&(computerNum==2))||((userNum==2)&&(computerNum==3))||((userNum==3)&&(computerNum==1))) //컴터가 이김
+    {
+        printf("컴퓨터가 승리했습니다.\n");
+        
+    }
+    else //비김
+    {
+        printf("비겼습니다.\n");
+    }
+}
+
+void numberFind(void) //랜덤숫자찾기 게임
+{
+    int maxNum;
+    int computerRandomNum = 0;
+    int userNumber=0;
+    
+    printf("랜덤넘버의 최댓값을 입력하시오 > ");
+    scanf("%d",&maxNum);
+    computerRandomNum = rand_func(maxNum); //컴퓨터 랜덤넘버 생성
+    printf("%d",computerRandomNum);
+    while(computerRandomNum!=userNumber)
+    {
+        printf("컴퓨터 랜덤넘버는? ");
+        scanf("%d",&userNumber);
+        if(computerRandomNum<userNumber) // 컴퓨터 난수가 유저보다 작음
+        {
+            printf("더 작은 수를 입력하세요.\n");
+        }
+        else if(computerRandomNum>userNumber) // 컴퓨터 난수가 유저보다 큼
+        {
+            printf("더 큰 수를 입력하세요.\n");
+        }
+        else // 둘이 같을때
+        {
+            printf("빙고!\n");
+            break;
+        }
+    }
+}
+
+int main(int argc,char *argv[])
+{
+    int choice=0;
+    
+    while (1) {
+        choice = menu(); // 번호입력받기
+        
+        if(choice==1)
+        {
+            RSP(); //가위바위보
+        }
+        else if(choice==2)
+        {
+            numberFind(); //랜덤넘버찾기 게임
+        }
+        else if(choice==3) // 종료
+        {
+            printf("프로그램을 종료합니다.\n");
+            break;
+        }
+        else //그 외의 숫자입력
+        {
+            printf("1~3에서의 숫자를 입력해주세요.\n");
+        }
+    }
+   
+    
+    return 0;
+    
+}
