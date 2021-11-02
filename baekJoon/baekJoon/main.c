@@ -2187,8 +2187,19 @@ void RSP(void)
 {
     int computerNum=rand_func(3);
     int userNum;
-    printf("1.가위 2.바위 3.보자기 선택해주세요 ! \n");
-    scanf("%d",&userNum);
+    
+    
+    while(1){
+        printf("1.가위 2.바위 3.보자기 선택해주세요 ! \n");
+        scanf("%d",&userNum);
+        if(userNum==1 || userNum==2 || userNum==3)
+            break;
+        else
+            printf("1~3의 숫자를 입력해주세요.\n");
+    }
+
+    
+
     // 1:가위 2:바위 3:보
     
     //컴퓨터가 졌을때
