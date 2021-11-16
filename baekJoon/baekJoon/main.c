@@ -2159,122 +2159,292 @@
 //    printf("%c학점 이상이고 %c학점보다 낮습니다.",'B','A');
 //}
 //
+//
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <time.h>
+//
+////메뉴판 출력함수
+//int menu(void)
+//{
+//    int num;
+//    printf("1. 가위/바위/보 게임\n");
+//    printf("2. 랜덤넘버 맞추기 게임\n");
+//    printf("3. 종료\n");
+//    scanf("%d",&num);
+//    return num;
+//}
+//
+////렌덤함수
+//int rand_func(int max_num)
+//{
+//    srand((unsigned)time(NULL));
+//    return rand()%max_num+1;
+//}
+//
+////가위바위보 함수
+//void RSP(void)
+//{
+//    int computerNum=rand_func(3);
+//    int userNum;
+//
+//
+//    while(1){
+//        printf("1.가위 2.바위 3.보자기 선택해주세요 ! \n");
+//        scanf("%d",&userNum);
+//        if(userNum==1 || userNum==2 || userNum==3)
+//            break;
+//        else
+//            printf("1~3의 숫자를 입력해주세요.\n");
+//    }
+//
+//
+//
+//    // 1:가위 2:바위 3:보
+//
+//    //컴퓨터가 졌을때
+//    if(((userNum==1)&&(computerNum==3))||((userNum==2)&&(computerNum==1))||((userNum==3)&&(computerNum==2)))
+//    {
+//        printf("유저가 승리했습니다.\n");
+//    }
+//    else if(((userNum==1)&&(computerNum==2))||((userNum==2)&&(computerNum==3))||((userNum==3)&&(computerNum==1))) //컴터가 이김
+//    {
+//        printf("컴퓨터가 승리했습니다.\n");
+//
+//    }
+//    else //비김
+//    {
+//        printf("비겼습니다.\n");
+//    }
+//}
+//
+//void numberFind(void) //랜덤숫자찾기 게임
+//{
+//    int maxNum;
+//    int computerRandomNum = 0;
+//    int userNumber=0;
+//
+//    printf("랜덤넘버의 최댓값을 입력하시오 > ");
+//    scanf("%d",&maxNum);
+//    computerRandomNum = rand_func(maxNum); //컴퓨터 랜덤넘버 생성
+//    printf("%d",computerRandomNum);
+//    while(computerRandomNum!=userNumber)
+//    {
+//        printf("컴퓨터 랜덤넘버는? ");
+//        scanf("%d",&userNumber);
+//        if(computerRandomNum<userNumber) // 컴퓨터 난수가 유저보다 작음
+//        {
+//            printf("더 작은 수를 입력하세요.\n");
+//        }
+//        else if(computerRandomNum>userNumber) // 컴퓨터 난수가 유저보다 큼
+//        {
+//            printf("더 큰 수를 입력하세요.\n");
+//        }
+//        else // 둘이 같을때
+//        {
+//            printf("빙고!\n");
+//            break;
+//        }
+//    }
+//}
+//
+//int main(int argc,char *argv[])
+//{
+//    int choice=0;
+//
+//    while (1) {
+//        choice = menu(); // 번호입력받기
+//
+//        if(choice==1)
+//        {
+//            RSP(); //가위바위보
+//        }
+//        else if(choice==2)
+//        {
+//            numberFind(); //랜덤넘버찾기 게임
+//        }
+//        else if(choice==3) // 종료
+//        {
+//            printf("프로그램을 종료합니다.\n");
+//            break;
+//        }
+//        else //그 외의 숫자입력
+//        {
+//            printf("1~3에서의 숫자를 입력해주세요.\n");
+//        }
+//    }
+//
+//
+//    return 0;
+//
+//}
+
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int length;
+//    int *p;
+//
+//    printf("생성할 배열의 길이 입력 : ");
+//    scanf("%d",&length);
+//
+//    int arr[length];
+//    p=arr; //포인터 변수가 배열을 참조하게 만듬
+//
+//    for(int i=0;i<length;i++)
+//    {
+//        printf("%d번째 숫자 : ",i+1);
+//        scanf("%d",(p+i)); //해당 주솟값으로 이동함
+//    }
+//    printf("입력받은 배열 : ");
+//    for(int i=0;i<length;i++)
+//    {
+//        printf("%d ",*(p+i)); //가리키는곳의 값을 출력함 *
+//    }
+//    printf("\n");
+//
+//
+//    return 0;
+//}
+//#include <stdio.h>
+//
+//void BS(int *num1,int *num2) //주솟값 받기
+//{
+//    int total=0;
+//    total=*num1+*num2;
+//
+//    if(*num1>*num2)
+//        *num2+=total;
+//    else if(*num2>*num1)
+//        *num1+=total;
+//    else
+//    {
+//        *num1 = 0;
+//        *num2 = 0;
+//    }
+//}
+//
+//int main(int argc,char *argv[])
+//{
+//    printf("숫자 2개를 입력해주세요. \n");
+//    //두개의 숫자가 같으면 0
+//    int num1,num2;
+//    printf("첫번째 숫자 : ");
+//    scanf("%d",&num1);
+//    printf("두번째 숫자 : ");
+//    scanf("%d",&num2);
+//
+//    BS(&num1,&num2); //주솟값 전달
+//
+//    printf("result : %d %d\n",num1,num2);
+//    return 0;
+//}
+//
+
+//#include <stdio.h>
+//
+//int main(int argc,char *argv[])
+//{
+//    int num1;
+//    char choice;
+//    int *ptr = &num1; //포인터 접근법
+//    printf("Input Number :");
+//    scanf("%d",&num1);
+//    printf("<w: num+1, s:num-1 1:Exit\n");
+//    getchar();
+//    printf("Choice : ");
+//    scanf("%c",&choice);
+//
+//    if(choice=='w')
+//    {
+//        (*ptr)++;
+//    }else if(choice=='s')
+//    {
+//        (*ptr)--;
+//    }
+//    else if(choice=='1')
+//    {
+//        printf("END\n");
+//        return 0;
+//    }
+//    printf("Result\n");
+//    printf("Your Choice : %c\n",choice);
+//    printf("num : %d, pointer: %p",num1,&num1);
+//
+//
+//
+//    return 0;
+//}
+
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int i = 10;
+//    int *pi = &i;
+//
+//    printf("i = %d, pi =%p\n",i,pi);
+//    (*pi)++;
+//    printf("i = %d, pi =%p\n",i,pi);
+//    *pi++;
+//    printf("i = %d, pi =%p\n",i,pi);
+//    return 0;
+//}
+
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
-//메뉴판 출력함수
-int menu(void)
+void triangle(int height,int *max)
 {
-    int num;
-    printf("1. 가위/바위/보 게임\n");
-    printf("2. 랜덤넘버 맞추기 게임\n");
-    printf("3. 종료\n");
-    scanf("%d",&num);
-    return num;
+    int arr[height][height]; //배열초기화
+    
+    //입력받기
+    for(int i=0;i<height;i++)
+        for(int j=0;j<i+1;j++)
+            scanf("%d",&arr[i][j]);
+    
+    for(int i=1;i<height;i++)
+    {
+        for(int j=0;j<=i;j++)
+        {
+            if (j==0) // 제일 왼쪽
+                arr[i][j]+=arr[i-1][j];
+            else if (j==i) // 제일 오른쪽
+                arr[i][j]+=arr[i-1][j-1];
+            else //그 외
+                arr[i][j]+=((arr[i-1][j-1]>=arr[i-1][j]) ? arr[i-1][j-1] : arr[i-1][j]);
+    
+            if (i==height-1) // 최대높이에 도달
+            {
+                if (*max<arr[i][j])
+                    *max=arr[i][j];
+            }
+        }
+    }
+        
 }
 
-//렌덤함수
-int rand_func(int max_num)
+int main(int argc, char *argv[])
 {
-    srand((unsigned)time(NULL));
-    return rand()%max_num+1;
-}
-
-//가위바위보 함수
-void RSP(void)
-{
-    int computerNum=rand_func(3);
-    int userNum;
-    
-    
+    int height;
+    int max=-99999; //최댓값
+    //1입력받으면 삼각형 x
     while(1){
-        printf("1.가위 2.바위 3.보자기 선택해주세요 ! \n");
-        scanf("%d",&userNum);
-        if(userNum==1 || userNum==2 || userNum==3)
+        scanf("%d",&height); //삼각형 높이
+        if(height>1)
             break;
         else
-            printf("1~3의 숫자를 입력해주세요.\n");
+            printf("2이상의 값을 입력해주세요\n");
     }
-
-    
-
-    // 1:가위 2:바위 3:보
-    
-    //컴퓨터가 졌을때
-    if(((userNum==1)&&(computerNum==3))||((userNum==2)&&(computerNum==1))||((userNum==3)&&(computerNum==2)))
-    {
-        printf("유저가 승리했습니다.\n");
-    }
-    else if(((userNum==1)&&(computerNum==2))||((userNum==2)&&(computerNum==3))||((userNum==3)&&(computerNum==1))) //컴터가 이김
-    {
-        printf("컴퓨터가 승리했습니다.\n");
         
-    }
-    else //비김
-    {
-        printf("비겼습니다.\n");
-    }
-}
-
-void numberFind(void) //랜덤숫자찾기 게임
-{
-    int maxNum;
-    int computerRandomNum = 0;
-    int userNumber=0;
     
-    printf("랜덤넘버의 최댓값을 입력하시오 > ");
-    scanf("%d",&maxNum);
-    computerRandomNum = rand_func(maxNum); //컴퓨터 랜덤넘버 생성
-    printf("%d",computerRandomNum);
-    while(computerRandomNum!=userNumber)
-    {
-        printf("컴퓨터 랜덤넘버는? ");
-        scanf("%d",&userNumber);
-        if(computerRandomNum<userNumber) // 컴퓨터 난수가 유저보다 작음
-        {
-            printf("더 작은 수를 입력하세요.\n");
-        }
-        else if(computerRandomNum>userNumber) // 컴퓨터 난수가 유저보다 큼
-        {
-            printf("더 큰 수를 입력하세요.\n");
-        }
-        else // 둘이 같을때
-        {
-            printf("빙고!\n");
-            break;
-        }
-    }
-}
 
-int main(int argc,char *argv[])
-{
-    int choice=0;
+    triangle(height,&max);
     
-    while (1) {
-        choice = menu(); // 번호입력받기
-        
-        if(choice==1)
-        {
-            RSP(); //가위바위보
-        }
-        else if(choice==2)
-        {
-            numberFind(); //랜덤넘버찾기 게임
-        }
-        else if(choice==3) // 종료
-        {
-            printf("프로그램을 종료합니다.\n");
-            break;
-        }
-        else //그 외의 숫자입력
-        {
-            printf("1~3에서의 숫자를 입력해주세요.\n");
-        }
-    }
-   
+    // 최댓값 출력
+    printf("%d\n",max);
+    
     
     return 0;
-    
 }
