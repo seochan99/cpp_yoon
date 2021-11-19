@@ -2395,9 +2395,8 @@
 
 #include <stdio.h>
 
-void triangle(int height,int *max)
+void triangle(int arr[][501],int *max,int height)
 {
-    int arr[height][height]; //배열초기화
     
     //입력받기
     for(int i=0;i<height;i++)
@@ -2422,25 +2421,24 @@ void triangle(int height,int *max)
             }
         }
     }
-        
 }
 
 int main(int argc, char *argv[])
 {
     int height;
+    int arr[501][501];
     int max=-99999; //최댓값
     //1입력받으면 삼각형 x
     while(1){
+        printf("2이상 500이하의 삼각형 높이를 입력해주세요 : ");
         scanf("%d",&height); //삼각형 높이
-        if(height>1)
+        if(height>1 && height<501)
             break;
         else
             printf("2이상의 값을 입력해주세요\n");
     }
         
-    
-
-    triangle(height,&max);
+    triangle(arr,&max,height);
     
     // 최댓값 출력
     printf("%d\n",max);
