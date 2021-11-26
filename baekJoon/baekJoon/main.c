@@ -2393,56 +2393,111 @@
 //}
 
 
+//#include <stdio.h>
+//
+//void triangle(int arr[][501],int *max,int height)
+//{
+//
+//    //입력받기
+//    for(int i=0;i<height;i++)
+//        for(int j=0;j<i+1;j++)
+//            scanf("%d",&arr[i][j]);
+//
+//    for(int i=1;i<height;i++)
+//    {
+//        for(int j=0;j<=i;j++)
+//        {
+//            if (j==0) // 제일 왼쪽
+//                arr[i][j]+=arr[i-1][j];
+//            else if (j==i) // 제일 오른쪽
+//                arr[i][j]+=arr[i-1][j-1];
+//            else //그 외
+//                arr[i][j]+=((arr[i-1][j-1]>=arr[i-1][j]) ? arr[i-1][j-1] : arr[i-1][j]);
+//
+//            if (i==height-1) // 최대높이에 도달
+//            {
+//                if (*max<arr[i][j])
+//                    *max=arr[i][j];
+//            }
+//        }
+//    }
+//}
+//
+//int main(int argc, char *argv[])
+//{
+//    int height;
+//    int arr[501][501];
+//    int max=-99999; //최댓값
+//    //1입력받으면 삼각형 x
+//    while(1){
+//        printf("2이상 500이하의 삼각형 높이를 입력해주세요 : ");
+//        scanf("%d",&height); //삼각형 높이
+//        if(height>1 && height<501)
+//            break;
+//        else
+//            printf("2이상의 값을 입력해주세요\n");
+//    }
+//
+//    triangle(arr,&max,height);
+//
+//    // 최댓값 출력
+//    printf("%d\n",max);
+//
+//
+//    return 0;
+//}
+//
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//int main(void)
+//{
+//    int *pi;
+//    pi = (int*)malloc(sizeof(int)*5);
+//    if(pi==NULL){
+//        printf("에러\n");
+//        exit(1);
+//    }
+//
+//    pi[0] = 100; // *(pi+0) = 100
+//    *(pi+1) = 200;
+//    pi[2] = 300;
+//    pi[3] = 400;
+//    pi[4] = 500;
+//
+//    printf("%d",pi[2]);
+//    free(pi);
+//
+//
+//    return 0;
+//
+//}
+
 #include <stdio.h>
+#include <stdlib.h>
 
-void triangle(int arr[][501],int *max,int height)
+struct Book
 {
+    int number;
+    char title[10];
+};
+
+int main(void)
+{
+    struct Book *p;
+    p = (struct Book*)malloc(sizeof(struct Book)*2);
     
-    //입력받기
-    for(int i=0;i<height;i++)
-        for(int j=0;j<i+1;j++)
-            scanf("%d",&arr[i][j]);
-    
-    for(int i=1;i<height;i++)
+    if(p==NULL)
     {
-        for(int j=0;j<=i;j++)
-        {
-            if (j==0) // 제일 왼쪽
-                arr[i][j]+=arr[i-1][j];
-            else if (j==i) // 제일 오른쪽
-                arr[i][j]+=arr[i-1][j-1];
-            else //그 외
-                arr[i][j]+=((arr[i-1][j-1]>=arr[i-1][j]) ? arr[i-1][j-1] : arr[i-1][j]);
-    
-            if (i==height-1) // 최대높이에 도달
-            {
-                if (*max<arr[i][j])
-                    *max=arr[i][j];
-            }
-        }
+        exit(1);
     }
-}
-
-int main(int argc, char *argv[])
-{
-    int height;
-    int arr[501][501];
-    int max=-99999; //최댓값
-    //1입력받으면 삼각형 x
-    while(1){
-        printf("2이상 500이하의 삼각형 높이를 입력해주세요 : ");
-        scanf("%d",&height); //삼각형 높이
-        if(height>1 && height<501)
-            break;
-        else
-            printf("2이상의 값을 입력해주세요\n");
-    }
-        
-    triangle(arr,&max,height);
     
-    // 최댓값 출력
-    printf("%d\n",max);
+    p->number=1;
+    strcpy(p->title,"C programming");
     
+    (p+1)->number=2;
+    strcpy((p+1)->title,Java);
     
+    free(p);
     return 0;
 }
