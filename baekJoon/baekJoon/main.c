@@ -2472,32 +2472,141 @@
 //    return 0;
 //
 //}
+//
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//struct Book
+//{
+//    int number;
+//    char title[10];
+//};
+//
+//int main(void)
+//{
+//    struct Book *p;
+//    p = (struct Book*)malloc(sizeof(struct Book)*2);
+//
+//    if(p==NULL)
+//    {
+//        exit(1);
+//    }
+//
+//    p->number=1;
+//    strcpy(p->title,"C programming");
+//
+//    (p+1)->number=2;
+//    strcpy((p+1)->title,Java);
+//
+//    free(p);
+//    return 0;
+//}
 
-#include <stdio.h>
-#include <stdlib.h>
+//1
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int grade[5],total;
+//
+//    for(int i=0;i<5;i++)
+//    {
+//        scanf("%d",&grade[i]);
+//    }
+//
+//    total=0;
+//    for(int i=0;i<5;i++)
+//    {
+//        total+=grade[i];
+//    }
+//
+//    printf("%d",total);
+//
+//
+//}
 
-struct Book
-{
-    int number;
-    char title[10];
+//2
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int score[5];
+//    float mean = 0.0;
+//    float weight[5]={0.3,0.3,0.1,0.1,0.2};
+//
+//    for(int i=0;i<5;i++)
+//    {
+//        scanf("%d",&score[i]);
+//    }
+//    for(int i=0;i<5;i++)
+//    {
+//        mean += score[i]*weight[i];
+//    }
+//    printf("%.1f",mean);
+//
+//
+//
+//
+//}
+
+//3
+#include<stdio.h>
+
+int size;
+
+struct student {
+   int number;
+   char name[10];
+   double grade;
 };
 
-int main(void)
+void student_input(struct student *p)
 {
-    struct Book *p;
-    p = (struct Book*)malloc(sizeof(struct Book)*2);
-    
-    if(p==NULL)
-    {
-        exit(1);
-    }
-    
-    p->number=1;
-    strcpy(p->title,"C programming");
-    
-    (p+1)->number=2;
-    strcpy((p+1)->title,Java);
-    
-    free(p);
-    return 0;
+   int i=0;
+   while (1)
+   {
+      char ans;
+      printf("%d번째 학생 정보 입력.\n", i + 1);
+      printf("학번 : ");
+      scanf("%d", &(p+i)->number);
+       
+      rewind(stdin);
+      printf("이름 : ");
+      scanf("%s", &(p+i)->name);
+      rewind(stdin);
+      printf("학점 : ");
+      scanf("%.2f", &(p+i)->grade);
+      rewind(stdin);
+
+      printf("학생 정보를 더 입력하시겠어요?(y/n) > ");
+      scanf("%c", &ans);
+      rewind(stdin);
+
+      size++;
+      if (ans == 'y')
+      {
+         ++i;
+         continue;
+      }
+      else if (ans == 'n')
+      {
+         break;
+      }
+   }
+}
+
+int main()
+{
+   int i;
+   struct student s[1000];
+   struct student *ps;
+   ps = s;
+
+   student_input(ps);
+
+   for (i = 0; i < size;i++)
+   {
+      printf("학번 : %d, 이름 : %s, 학점 :  %.2f\n", s[i].number, s[i].name, s[i].grade);
+   }
+
 }
