@@ -2550,63 +2550,249 @@
 //}
 
 //3
-#include<stdio.h>
+//#include<stdio.h>
+//
+//int size;
+//
+//struct student {
+//   int number;
+//   char name[10];
+//   double grade;
+//};
+//
+//void student_input(struct student *p)
+//{
+//   int i=0;
+//   while (1)
+//   {
+//      char ans;
+//      printf("%d번째 학생 정보 입력.\n", i + 1);
+//      printf("학번 : ");
+//      scanf("%d", &(p+i)->number);
+//
+//      rewind(stdin);
+//      printf("이름 : ");
+//      scanf("%s", &(p+i)->name);
+//      rewind(stdin);
+//      printf("학점 : ");
+//      scanf("%.2f", &(p+i)->grade);
+//      rewind(stdin);
+//
+//      printf("학생 정보를 더 입력하시겠어요?(y/n) > ");
+//      scanf("%c", &ans);
+//      rewind(stdin);
+//
+//      size++;
+//      if (ans == 'y')
+//      {
+//         ++i;
+//         continue;
+//      }
+//      else if (ans == 'n')
+//      {
+//         break;
+//      }
+//   }
+//}
+//
+//int main()
+//{
+//   int i;
+//   struct student s[1000];
+//   struct student *ps;
+//   ps = s;
+//
+//   student_input(ps);
+//
+//   for (i = 0; i < size;i++)
+//   {
+//      printf("학번 : %d, 이름 : %s, 학점 :  %.2f\n", s[i].number, s[i].name, s[i].grade);
+//   }
+//
+//}
 
-int size;
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    int num = 10;
+//    int *p;
+//    int v=0;
+//    p =&num;
+//
+//    printf("V:%d p:%u num:%d\n",v,p,num);
+//    printf("V:%d p:%u num:%d\n",v,p,num);
+//    v=*++p; //p를 증가시킨후에 p가 가리키는 값을 v에 대입한다.
+//    v=*p++; //p가 가리키는 값을 브이에 넣고 p의 값(주소값)을 증가시킨다
+//    printf("V:%d p:%u num:%d\n",v,p,num);
+//    v=(*p)++; //p가 가리키는 값을 v에 대입한 후에 가리키는 값을 증가시킨다.
+//
+//    printf("V:%d p:%u num:%d\n",v,p,num);
+//    v=++*p;
+//    printf("V:%d p:%u num:%d\n",v,p,num);
+//
+//
+//
+//    return 0;
+//}
 
-struct student {
-   int number;
-   char name[10];
-   double grade;
+
+//#include <stdio.h>
+//
+//enum tvtype {LCD, PDP};
+//int main(void)
+//{
+//    enum tvtype code;
+//    printf("코드를 입력하세여 \n");
+//    scanf("%d",&code); //열거형을 통해서 숫자를 입력함으로서 케이스를 가서 문자열을 볼수있다.
+//
+//    switch (code) {
+//        case LCD:
+//            printf("LCD\n");
+//            break;
+//        case PDP:
+//            printf("PDP\n");
+//            break;
+//        default:
+//            break;
+//    }
+//
+//}
+//
+//
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct student
+{
+    char name[20];
+    int age;
+    char gender[10];
 };
 
-void student_input(struct student *p)
+int main(int argc,char *argv[])
 {
-   int i=0;
-   while (1)
-   {
-      char ans;
-      printf("%d번째 학생 정보 입력.\n", i + 1);
-      printf("학번 : ");
-      scanf("%d", &(p+i)->number);
-       
-      rewind(stdin);
-      printf("이름 : ");
-      scanf("%s", &(p+i)->name);
-      rewind(stdin);
-      printf("학점 : ");
-      scanf("%.2f", &(p+i)->grade);
-      rewind(stdin);
+    int num;
+    struct student *ps;
+    printf("num입력: ");
+    scanf("%d",&num);
+    ps = (struct student*)malloc(sizeof(struct student));
 
-      printf("학생 정보를 더 입력하시겠어요?(y/n) > ");
-      scanf("%c", &ans);
-      rewind(stdin);
+    if(ps==NULL)
+    {
+        exit(1);
+    }
+    for(int i=0;i<num;i++)
+    {
+        printf("name : ");
+        scanf("%s",(ps+i)->name);
+        printf("age :");
+        scanf("%d",&(ps+i)->age);
+        printf("gender : ");
+        scanf("%s",(ps+i)->gender);
+    }
+    for(int i=0;i<num;i++)
+    {
+        printf("%d",i);
+        printf("%s\n",(ps+i)->name);
+        printf("%d\n",(ps+i)->age);
+        printf("%s\n",(ps+i)->gender);
+    }
+    free(ps);
 
-      size++;
-      if (ans == 'y')
-      {
-         ++i;
-         continue;
-      }
-      else if (ans == 'n')
-      {
-         break;
-      }
-   }
+
+    return 0;
 }
 
-int main()
+//#include <stdio.h>
+//
+//int main(void)
+//{
+//    FILE *fp;
+//    fp = fopen("data.txt", "r");
+//    if(fp==NULL)
+//    {
+//        printf("ERROR\n");
+//        return 1;
+//    }
+//    fclose(fp);
+//    return 0;
+//}
+//
+//#include <stdio.h>
+//#include <stdlib.h>
+//FILE *FOPEN(char *fname, char *fmode);
+//int main(void)
+//{
+//    FILE *fp;
+//    fp =FOPEN("data.txt", "r");
+//    fclose(fp);
+//    return 0;
+//}
+//FILE *FOPEN(char *fname, char *fmode)
+//{
+//    FILE *fp;
+//    fp = fopen(fname, fmode);
+//    if(fp==NULL)
+//    {
+//        printf("ERRO");
+//        exit(1);
+//    }
+//    return fp;
+//}
+
+//#include <stdio.h>
+//
+//void swap(int *ptr1, int *ptr2)
+//{
+//    int temp=0;
+//    temp = *ptr1;
+//    *ptr1 = *ptr2;
+//    *ptr2 = temp;
+//}
+//
+//int main(void)
+//{
+//    int num1 = 10;
+//    int num2 = 20;
+//    printf("num1 : %d num2 : %d\n",num1,num2);
+//    swap(&num1, &num2);
+//    printf("num1 : %d num2 : %d\n",num1,num2);
+//
+//
+//}
+//
+
+#include <stdio.h>
+
+struct vector{
+    float x;
+    float y;
+};
+
+struct vector get_vector_sum(struct vector a,struct vector b) //구조체반환함수
 {
-   int i;
-   struct student s[1000];
-   struct student *ps;
-   ps = s;
+    struct vector result;
+    
+    result.x= a.x+b.x;
+    result.y = a.y+b.y;
+    
+    return result;
+}
 
-   student_input(ps);
-
-   for (i = 0; i < size;i++)
-   {
-      printf("학번 : %d, 이름 : %s, 학점 :  %.2f\n", s[i].number, s[i].name, s[i].grade);
-   }
-
+int main(void)
+{
+    struct vector a = {2.0,3.0};
+    struct vector b = {2.0,3.0};
+    struct vector su;
+    char str[20];
+    gets(str);
+    puts(str);
+        
+    
+    
+    
+    return 0;
 }
