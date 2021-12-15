@@ -2671,128 +2671,128 @@ struct student
     int age;
     char gender[10];
 };
-
-int main(int argc,char *argv[])
-{
-    int num;
-    struct student *ps;
-    printf("num입력: ");
-    scanf("%d",&num);
-    ps = (struct student*)malloc(sizeof(struct student));
-
-    if(ps==NULL)
-    {
-        exit(1);
-    }
-    for(int i=0;i<num;i++)
-    {
-        printf("name : ");
-        scanf("%s",(ps+i)->name);
-        printf("age :");
-        scanf("%d",&(ps+i)->age);
-        printf("gender : ");
-        scanf("%s",(ps+i)->gender);
-    }
-    for(int i=0;i<num;i++)
-    {
-        printf("%d",i);
-        printf("%s\n",(ps+i)->name);
-        printf("%d\n",(ps+i)->age);
-        printf("%s\n",(ps+i)->gender);
-    }
-    free(ps);
-
-
-    return 0;
-}
-
-//#include <stdio.h>
 //
-//int main(void)
+//int main(int argc,char *argv[])
 //{
-//    FILE *fp;
-//    fp = fopen("data.txt", "r");
-//    if(fp==NULL)
-//    {
-//        printf("ERROR\n");
-//        return 1;
-//    }
-//    fclose(fp);
-//    return 0;
-//}
+//    int num;
+//    struct student *ps;
+//    printf("num입력: ");
+//    scanf("%d",&num);
+//    ps = (struct student*)malloc(sizeof(struct student));
 //
-//#include <stdio.h>
-//#include <stdlib.h>
-//FILE *FOPEN(char *fname, char *fmode);
-//int main(void)
-//{
-//    FILE *fp;
-//    fp =FOPEN("data.txt", "r");
-//    fclose(fp);
-//    return 0;
-//}
-//FILE *FOPEN(char *fname, char *fmode)
-//{
-//    FILE *fp;
-//    fp = fopen(fname, fmode);
-//    if(fp==NULL)
+//    if(ps==NULL)
 //    {
-//        printf("ERRO");
 //        exit(1);
 //    }
-//    return fp;
+//    for(int i=0;i<num;i++)
+//    {
+//        printf("name : ");
+//        scanf("%s",(ps+i)->name);
+//        printf("age :");
+//        scanf("%d",&(ps+i)->age);
+//        printf("gender : ");
+//        scanf("%s",(ps+i)->gender);
+//    }
+//    for(int i=0;i<num;i++)
+//    {
+//        printf("%d",i);
+//        printf("%s\n",(ps+i)->name);
+//        printf("%d\n",(ps+i)->age);
+//        printf("%s\n",(ps+i)->gender);
+//    }
+//    free(ps);
+//
+//
+//    return 0;
 //}
-
+//
+////#include <stdio.h>
+////
+////int main(void)
+////{
+////    FILE *fp;
+////    fp = fopen("data.txt", "r");
+////    if(fp==NULL)
+////    {
+////        printf("ERROR\n");
+////        return 1;
+////    }
+////    fclose(fp);
+////    return 0;
+////}
+////
+////#include <stdio.h>
+////#include <stdlib.h>
+////FILE *FOPEN(char *fname, char *fmode);
+////int main(void)
+////{
+////    FILE *fp;
+////    fp =FOPEN("data.txt", "r");
+////    fclose(fp);
+////    return 0;
+////}
+////FILE *FOPEN(char *fname, char *fmode)
+////{
+////    FILE *fp;
+////    fp = fopen(fname, fmode);
+////    if(fp==NULL)
+////    {
+////        printf("ERRO");
+////        exit(1);
+////    }
+////    return fp;
+////}
+//
+////#include <stdio.h>
+////
+////void swap(int *ptr1, int *ptr2)
+////{
+////    int temp=0;
+////    temp = *ptr1;
+////    *ptr1 = *ptr2;
+////    *ptr2 = temp;
+////}
+////
+////int main(void)
+////{
+////    int num1 = 10;
+////    int num2 = 20;
+////    printf("num1 : %d num2 : %d\n",num1,num2);
+////    swap(&num1, &num2);
+////    printf("num1 : %d num2 : %d\n",num1,num2);
+////
+////
+////}
+////
+//
 //#include <stdio.h>
 //
-//void swap(int *ptr1, int *ptr2)
+//struct vector{
+//    float x;
+//    float y;
+//};
+//
+//struct vector get_vector_sum(struct vector a,struct vector b) //구조체반환함수
 //{
-//    int temp=0;
-//    temp = *ptr1;
-//    *ptr1 = *ptr2;
-//    *ptr2 = temp;
+//    struct vector result;
+//
+//    result.x= a.x+b.x;
+//    result.y = a.y+b.y;
+//
+//    return result;
 //}
 //
 //int main(void)
 //{
-//    int num1 = 10;
-//    int num2 = 20;
-//    printf("num1 : %d num2 : %d\n",num1,num2);
-//    swap(&num1, &num2);
-//    printf("num1 : %d num2 : %d\n",num1,num2);
+//    struct vector a = {2.0,3.0};
+//    struct vector b = {2.0,3.0};
+//    struct vector su;
+//    char str[20];
+//    gets(str);
+//    puts(str);
 //
 //
+//
+//
+//    return 0;
 //}
-//
-
-#include <stdio.h>
-
-struct vector{
-    float x;
-    float y;
-};
-
-struct vector get_vector_sum(struct vector a,struct vector b) //구조체반환함수
-{
-    struct vector result;
-    
-    result.x= a.x+b.x;
-    result.y = a.y+b.y;
-    
-    return result;
-}
-
-int main(void)
-{
-    struct vector a = {2.0,3.0};
-    struct vector b = {2.0,3.0};
-    struct vector su;
-    char str[20];
-    gets(str);
-    puts(str);
-        
-    
-    
-    
-    return 0;
-}
